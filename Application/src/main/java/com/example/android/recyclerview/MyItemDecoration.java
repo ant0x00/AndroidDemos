@@ -16,14 +16,28 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.left = dpToPx(5);
-        outRect.right = dpToPx(5);
-        outRect.bottom = dpToPx(5);
+        if(parent.getChildAdapterPosition(view) == 0){
+            outRect.left = dpToPx(10);
+            outRect.right = dpToPx(5);
+        }else if(parent.getChildAdapterPosition(view)>0 && parent.getChildAdapterPosition(view)%3 == 2){
+            outRect.left = dpToPx(10);
+            outRect.right = dpToPx(5);
+        }else if(parent.getChildAdapterPosition(view)%3 == 0){
+            outRect.left = dpToPx(5);
+            outRect.right = dpToPx(5);
+        }else {
+            outRect.left = dpToPx(5);
+            outRect.right = dpToPx(10);
+        }
+        outRect.bottom = dpToPx(5f);
     }
 
     private int dpToPx(int dps) {
         return Math.round(context.getResources().getDisplayMetrics().density * dps);
     }
 
-
+    public int dpToPx(float dips)
+    {
+        return (int) (dips *  context.getResources().getDisplayMetrics().density + 0.5f);
+    }
 }

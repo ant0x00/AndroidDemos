@@ -34,8 +34,9 @@ public class RecyclerViewFragment extends Fragment {
 
     private static final String TAG = "RecyclerViewFragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
-    private static final int SPAN_COUNT = 2;
+    private static final int SPAN_COUNT = 3;
     private static final int DATASET_COUNT = 60;
+    private MyItemDecoration myDec;
 
     private enum LayoutManagerType {
         GRID_LAYOUT_MANAGER,
@@ -69,13 +70,14 @@ public class RecyclerViewFragment extends Fragment {
 
         // BEGIN_INCLUDE(initializeRecyclerView)
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        myDec = new MyItemDecoration(getContext());
 
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion
         // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
         // elements are laid out.
         mLayoutManager = new LinearLayoutManager(getActivity());
 
-        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
 
         if (savedInstanceState != null) {
             // Restore saved layout manager type.
@@ -84,19 +86,20 @@ public class RecyclerViewFragment extends Fragment {
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
+
         mAdapter = new CustomAdapter(mDataset);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // END_INCLUDE(initializeRecyclerView)
 
-        mRecyclerView.addItemDecoration(new MyItemDecoration(getContext()));
 
-
+//        mRecyclerView.addItemDecoration(new MyItemDecoration(getContext()));
         mLinearLayoutRadioButton = (RadioButton) rootView.findViewById(R.id.linear_layout_rb);
         mLinearLayoutRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setRecyclerViewLayoutManager(LayoutManagerType.LINEAR_LAYOUT_MANAGER);
+                mRecyclerView.removeItemDecoration(myDec);
             }
         });
 
@@ -105,6 +108,11 @@ public class RecyclerViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 setRecyclerViewLayoutManager(LayoutManagerType.GRID_LAYOUT_MANAGER);
+                if(mCurrentLayoutManagerType==LayoutManagerType.GRID_LAYOUT_MANAGER){
+
+                    mRecyclerView.addItemDecoration(myDec);
+                    //增加recyclerview中item的间距
+                }
             }
         });
 
@@ -128,7 +136,22 @@ public class RecyclerViewFragment extends Fragment {
         switch (layoutManagerType) {
             case GRID_LAYOUT_MANAGER:
                 mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
+                GridLayoutManager gridLayoutM = (GridLayoutManager)mLayoutManager;
+                gridLayoutM.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        if(position==0){
+                            return 2;
+                        }
+                        return 1;
+                    }
+                });
+
+
+
+
                 mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+
                 break;
             case LINEAR_LAYOUT_MANAGER:
                 mLayoutManager = new LinearLayoutManager(getActivity());
