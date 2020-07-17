@@ -16,12 +16,15 @@
 
 package com.example.android.recyclerview;
 
+import com.bumptech.glide.Glide;
 import com.example.android.common.logger.Log;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -31,6 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private static final String TAG = "CustomAdapter";
 
     private String[] mDataSet;
+    private Context mContext;
 
     // BEGIN_INCLUDE(recyclerViewSampleViewHolder)
     /**
@@ -38,6 +42,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private final ImageView imgView;
 
         public ViewHolder(View v) {
             super(v);
@@ -49,11 +54,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 }
             });
             textView = (TextView) v.findViewById(R.id.textView);
+            imgView = (ImageView) v.findViewById(R.id.imageView);
         }
 
         public TextView getTextView() {
             return textView;
         }
+
+        public ImageView getImgView(){
+            return imgView;
+        }
+
     }
     // END_INCLUDE(recyclerViewSampleViewHolder)
 
@@ -62,8 +73,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
      *
      * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
      */
-    public CustomAdapter(String[] dataSet) {
+    public CustomAdapter(Context context, String[] dataSet) {
+
         mDataSet = dataSet;
+        mContext = context;
     }
 
     // BEGIN_INCLUDE(recyclerViewOnCreateViewHolder)
@@ -87,6 +100,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.getTextView().setText(mDataSet[position]);
+        Glide.with(mContext)
+                .load("https://oimagea4.ydstatic.com/image?id=8601144713117005134&product=adpublish&w=520&h=347")
+                .placeholder(R.drawable.img)
+                .into(viewHolder.getImgView());
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
