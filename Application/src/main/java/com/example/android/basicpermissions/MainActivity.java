@@ -28,7 +28,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.example.android.basicpermissions.camera.CameraPreviewActivity;
 
 /**
@@ -57,14 +62,62 @@ public class MainActivity extends AppCompatActivity
         implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int PERMISSION_REQUEST_CAMERA = 0;
+    private static final int PERMISSION_REQUEST_LOCATION = 1;
 
     private View mLayout;
+    private TextView cityName;
+    private Button btnStartLocate;
+
+    public LocationClient mLocationClient = null;
+    private MyLocationListener myListener;
+
+
+    public class MyLocationListener extends BDAbstractLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation location){
+            //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
+            //以下只列举部分获取地址相关的结果信息
+            //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
+
+            String addr = location.getAddrStr();    //获取详细地址信息
+            String country = location.getCountry();    //获取国家
+            String province = location.getProvince();    //获取省份
+            String city = location.getCity();    //获取城市
+            String district = location.getDistrict();    //获取区县
+            String street = location.getStreet();    //获取街道信息
+            String adcode = location.getAdCode();    //获取adcode
+            String town = location.getTown();    //获取乡镇信息
+
+            setCityName(city,0);
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mLayout = findViewById(R.id.main_layout);
+
+
+        mLocationClient = new LocationClient(getApplicationContext());
+        myListener = new MyLocationListener();
+        //声明LocationClient类
+        mLocationClient.registerLocationListener(myListener);
+
+        LocationClientOption option = new LocationClientOption();
+
+        option.setIsNeedAddress(true);
+        //可选，是否需要地址信息，默认为不需要，即参数为false
+        //如果开发者需要获得当前点的地址信息，此处必须为true
+
+        option.setNeedNewVersionRgc(true);
+        //可选，设置是否需要最新版本的地址信息。默认需要，即参数为true
+
+        mLocationClient.setLocOption(option);
+        //mLocationClient为第二步初始化过的LocationClient对象
+        //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
+        //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
 
         // Register a listener for the 'Show Camera Preview' button.
         findViewById(R.id.button_open_camera).setOnClickListener(new View.OnClickListener() {
@@ -73,8 +126,45 @@ public class MainActivity extends AppCompatActivity
                 showCameraPreview();
             }
         });
+
+        cityName = findViewById(R.id.txt_city_name);
+        btnStartLocate = findViewById(R.id.btn_start_locate);
+
+        btnStartLocate.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                requestCameraPermission();
+                mLocationClient.start();
+            }
+        });
+
     }
 
+    public void setCityName(final String str, final int tag) {
+
+        try {
+            if (cityName != null) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        cityName.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (tag == 1) {
+                                    cityName.setText(str);
+                                } else if (tag == 0) {
+                                    cityName.setText(str);
+                                }
+                            }
+                        });
+                    }
+                }).start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
             @NonNull int[] grantResults) {
@@ -149,5 +239,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, CameraPreviewActivity.class);
         startActivity(intent);
     }
+
 
 }
