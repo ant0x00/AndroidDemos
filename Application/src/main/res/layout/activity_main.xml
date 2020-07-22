@@ -26,15 +26,32 @@
     android:paddingTop="@dimen/vertical_page_margin"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button_open_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/horizontal_page_margin"
+        android:text="@string/open_camera_preview" />
+
+
+    <Button
+        android:id="@+id/button_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/horizontal_page_margin"
+        android:text="@string/start_locate" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/horizontal_page_margin"
+        android:text="@string/city_name" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/horizontal_page_margin"
         android:text="@string/intro" />
 
-    <Button
-        android:id="@+id/button_open_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/open_camera_preview" />
 </LinearLayout>
