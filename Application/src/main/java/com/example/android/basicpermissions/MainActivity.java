@@ -1,18 +1,18 @@
 /*
-* Copyright 2015 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2015 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.example.android.basicpermissions;
 
@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,6 +36,8 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.android.basicpermissions.camera.CameraPreviewActivity;
+
+import java.util.ArrayList;
 
 /**
  * Launcher Activity that demonstrates the use of runtime permissions for Android M.
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity
 
     public class MyLocationListener extends BDAbstractLocationListener {
         @Override
-        public void onReceiveLocation(BDLocation location){
+        public void onReceiveLocation(BDLocation location) {
             //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
             //以下只列举部分获取地址相关的结果信息
             //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity
             String adcode = location.getAdCode();    //获取adcode
             String town = location.getTown();    //获取乡镇信息
 
-            setCityName(city,0);
+//            setCityName(city, 0);
         }
     }
 
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mLayout = findViewById(R.id.main_layout);
 
-
+        //My code start:
         mLocationClient = new LocationClient(getApplicationContext());
         myListener = new MyLocationListener();
         //声明LocationClient类
@@ -119,6 +122,20 @@ public class MainActivity extends AppCompatActivity
         //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
         //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
 
+        cityName = findViewById(R.id.txt_city_name);
+        btnStartLocate = findViewById(R.id.btn_start_locate);
+
+        btnStartLocate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                getCurrentLocation();
+/*                requestCameraPermission();
+                mLocationClient.start();*/
+            }
+        });
+        //My code end.
+
         // Register a listener for the 'Show Camera Preview' button.
         findViewById(R.id.button_open_camera).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,18 +144,55 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        cityName = findViewById(R.id.txt_city_name);
-        btnStartLocate = findViewById(R.id.btn_start_locate);
 
-        btnStartLocate.setOnClickListener(new View.OnClickListener(){
+    }
 
-            @Override
-            public void onClick(View view) {
-                requestCameraPermission();
-                mLocationClient.start();
-            }
-        });
+    private void getCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Snackbar.make(mLayout,
+                    R.string.location_permission_available,
+                    Snackbar.LENGTH_SHORT).show();
+        } else {
+            requestLocationPermission();
+        }
+    }
 
+    private void requestLocationPermission() {
+        Log.d("wanglong", ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) + " ");
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // Display a SnackBar with cda button to request the missing permission.
+            Snackbar.make(mLayout, R.string.location_access_required,
+                    Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ArrayList<String> permissions = new ArrayList<String>();
+                    /***
+                     * 定位权限为必须权限，用户如果禁止，则每次进入都会申请
+                     */
+                    // 定位精确位置
+                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+                    }
+                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+                    }
+                    if (permissions.size() > 0) {
+                        ActivityCompat.requestPermissions(MainActivity.this, permissions.toArray(new String[permissions.size()]), 9527);
+                    }
+                }
+            }).show();
+        } else {
+            Snackbar.make(mLayout, R.string.location_unavailable, Snackbar.LENGTH_SHORT).show();
+            // Request the permission. The result will be received in onRequestPermissionResult().
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 9527);
+        }
     }
 
     public void setCityName(final String str, final int tag) {
@@ -165,9 +219,10 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults) {
         // BEGIN_INCLUDE(onRequestPermissionsResult)
         if (requestCode == PERMISSION_REQUEST_CAMERA) {
             // Request for camera permission.
