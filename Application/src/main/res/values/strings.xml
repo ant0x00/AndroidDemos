@@ -37,5 +37,7 @@ features available.]]>
     <string name="camera_permission_available">Camera permission is available. Starting preview.</string>
     <string name="location_permission_available">定位权限已开启，请使用~</string>
     <string name="camera_permission_granted">Camera permission was granted. Starting preview.</string>
+    <string name="location_permission_granted">Location permission was granted. Starting preview.</string>
     <string name="camera_permission_denied">Camera permission request was denied.</string>
+    <string name="location_permission_denied">Location permission request was denied.</string>
 </resources>

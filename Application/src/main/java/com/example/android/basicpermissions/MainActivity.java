@@ -240,6 +240,20 @@ public class MainActivity extends AppCompatActivity
             }
         }
         // END_INCLUDE(onRequestPermissionsResult)
+
+        if (requestCode == 9527){
+            Log.d("wanglong", grantResults.length +"");
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Snackbar.make(mLayout, R.string.location_permission_granted,
+                        Snackbar.LENGTH_SHORT)
+                        .show();
+            }else {
+                // Permission request was denied.
+                Snackbar.make(mLayout, R.string.location_permission_denied,
+                        Snackbar.LENGTH_SHORT)
+                        .show();
+            }
+        }
     }
 
     private void showCameraPreview() {
