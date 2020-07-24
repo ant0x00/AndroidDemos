@@ -35,11 +35,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.android.basicpermissions.camera.CameraPreviewActivity;
+
+import org.apache.http.client.methods.HttpPost;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -78,6 +90,7 @@ public class MainActivity extends AppCompatActivity
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener;
     private AlertDialog.Builder builder;
+    private HttpPost httpRequest;
 
 
     public class MyLocationListener extends BDAbstractLocationListener {
@@ -95,8 +108,8 @@ public class MainActivity extends AppCompatActivity
             String street = location.getStreet();    //获取街道信息
             String adcode = location.getAdCode();    //获取adcode
             String town = location.getTown();    //获取乡镇信息
-
-            setCityName(city, 0);
+            String locationDescribe = location.getLocationDescribe();    //获取位置描述信息
+            setCityName(city+", "+locationDescribe, 0);
         }
     }
 
@@ -128,6 +141,43 @@ public class MainActivity extends AppCompatActivity
                 showCameraPreview();
             }
         });
+
+        getData();
+
+    }
+
+    private void getData() {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+//        String url ="http://hotelmicro.aoyou.com/app/Hotel/GetHotelCityList";
+        String url ="http://mservicetest.aoyou.com/api40/Hotel/GetHotelCityList";
+
+        httpRequest = new HttpPost();
+        httpRequest.addHeader("User-Agent", "android500519/ECE595BFD194AD6922B291694D8A1B31/ffffffff-a642-d802-ffff-fffff3f3e46b/0/1507bfd3f7f5b36231b");
+        httpRequest.addHeader("Accept-Encoding", "gzip");
+        JSONObject jsonParam = new JSONObject();
+
+        // Request a string response from the provided URL.
+        VolleyHttpRequest  jsonObj = new VolleyHttpRequest(httpRequest.getAllHeaders(), url,jsonParam,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Display the first 500 characters of the response string.
+//                        textView.setText("Response is: "+ response.substring(0,500));
+                        Log.d("wanglong", response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                textView.setText("That didn't work!");
+            }
+        }
+
+        );
+
+
+                // Add the request to the RequestQueue.
+        queue.add(jsonObj);
     }
 
     private void initBaiduLocation() {
@@ -145,11 +195,14 @@ public class MainActivity extends AppCompatActivity
 
         option.setNeedNewVersionRgc(true);
         //可选，设置是否需要最新版本的地址信息。默认需要，即参数为true
+        option.setIsNeedLocationDescribe(true);
 
         mLocationClient.setLocOption(option);
         //mLocationClient为第二步初始化过的LocationClient对象
         //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
         //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
+
+
     }
 
     private void getCurrentLocation() {
