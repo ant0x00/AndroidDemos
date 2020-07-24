@@ -18,10 +18,14 @@ package com.example.android.basicpermissions;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity
 
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener;
+    private AlertDialog.Builder builder;
 
 
     public class MyLocationListener extends BDAbstractLocationListener {
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity
             String adcode = location.getAdCode();    //获取adcode
             String town = location.getTown();    //获取乡镇信息
 
-//            setCityName(city, 0);
+            setCityName(city, 0);
         }
     }
 
@@ -101,7 +106,31 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mLayout = findViewById(R.id.main_layout);
+        cityName = findViewById(R.id.txt_city_name);
+        btnStartLocate = findViewById(R.id.btn_start_locate);
 
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 9527);
+        initBaiduLocation();
+
+        btnStartLocate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                getCurrentLocation();
+            }
+        });
+
+        // Register a listener for the 'Show Camera Preview' button.
+        findViewById(R.id.button_open_camera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showCameraPreview();
+            }
+        });
+    }
+
+    private void initBaiduLocation() {
         //My code start:
         mLocationClient = new LocationClient(getApplicationContext());
         myListener = new MyLocationListener();
@@ -121,30 +150,6 @@ public class MainActivity extends AppCompatActivity
         //mLocationClient为第二步初始化过的LocationClient对象
         //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
         //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
-
-        cityName = findViewById(R.id.txt_city_name);
-        btnStartLocate = findViewById(R.id.btn_start_locate);
-
-        btnStartLocate.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                getCurrentLocation();
-/*                requestCameraPermission();
-                mLocationClient.start();*/
-            }
-        });
-        //My code end.
-
-        // Register a listener for the 'Show Camera Preview' button.
-        findViewById(R.id.button_open_camera).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showCameraPreview();
-            }
-        });
-
-
     }
 
     private void getCurrentLocation() {
@@ -152,6 +157,7 @@ public class MainActivity extends AppCompatActivity
             Snackbar.make(mLayout,
                     R.string.location_permission_available,
                     Snackbar.LENGTH_SHORT).show();
+            mLocationClient.start();
         } else {
             requestLocationPermission();
         }
@@ -188,6 +194,25 @@ public class MainActivity extends AppCompatActivity
                 }
             }).show();
         } else {
+            builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setView(MainActivity.this.getLayoutInflater().inflate(R.layout.confirm_dialog,null,false));
+            builder.setTitle("未开启定位")
+                    .setMessage("请开启定位")
+                    .setNegativeButton("知道了", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // FIRE ZE MISSILES!
+                        }
+                    })
+                    .setPositiveButton("去设置", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent settingLocate = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            if (settingLocate.resolveActivity(getPackageManager()) != null) {
+                                startActivity(settingLocate);
+                            }
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
             Snackbar.make(mLayout, R.string.location_unavailable, Snackbar.LENGTH_SHORT).show();
             // Request the permission. The result will be received in onRequestPermissionResult().
             ActivityCompat.requestPermissions(this,
@@ -207,8 +232,10 @@ public class MainActivity extends AppCompatActivity
                             public void run() {
                                 if (tag == 1) {
                                     cityName.setText(str);
+
                                 } else if (tag == 0) {
                                     cityName.setText(str);
+                                    cityName.setTextColor(Color.RED);
                                 }
                             }
                         });
@@ -223,6 +250,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+
+        if (requestCode == 9527) {
+            Log.d("wanglong", grantResults.length + "");
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Snackbar.make(mLayout, R.string.location_permission_granted,
+                        Snackbar.LENGTH_SHORT)
+                        .show();
+                mLocationClient.start();
+            } else {
+                // Permission request was denied.
+                Snackbar.make(mLayout, R.string.location_permission_denied,
+                        Snackbar.LENGTH_SHORT)
+                        .show();
+
+            }
+        }
+
         // BEGIN_INCLUDE(onRequestPermissionsResult)
         if (requestCode == PERMISSION_REQUEST_CAMERA) {
             // Request for camera permission.
@@ -240,21 +284,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
         // END_INCLUDE(onRequestPermissionsResult)
-
-        if (requestCode == 9527){
-            Log.d("wanglong", grantResults.length +"");
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Snackbar.make(mLayout, R.string.location_permission_granted,
-                        Snackbar.LENGTH_SHORT)
-                        .show();
-            }else {
-                // Permission request was denied.
-                Snackbar.make(mLayout, R.string.location_permission_denied,
-                        Snackbar.LENGTH_SHORT)
-                        .show();
-            }
-        }
     }
+
 
     private void showCameraPreview() {
         // BEGIN_INCLUDE(startCamera)
