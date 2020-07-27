@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WebViewDemo</string>
+    <string name="login_or_not">loginOrNot</string>
+</resources>
