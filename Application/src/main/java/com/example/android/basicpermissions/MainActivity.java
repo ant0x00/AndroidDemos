@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener;
     private AlertDialog.Builder builder;
-    private HttpPost httpRequest;
+
 
 
     public class MyLocationListener extends BDAbstractLocationListener {
@@ -142,43 +142,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        getData();
-
-    }
-
-    private void getData() {
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://hotelmicro.aoyou.com/app/Hotel/GetHotelCityList";
-        String url ="http://mservicetest.aoyou.com/api40/Hotel/GetHotelCityList";
-
-        httpRequest = new HttpPost();
-        httpRequest.addHeader("User-Agent", "android500519/ECE595BFD194AD6922B291694D8A1B31/ffffffff-a642-d802-ffff-fffff3f3e46b/0/1507bfd3f7f5b36231b");
-        httpRequest.addHeader("Accept-Encoding", "gzip");
-        JSONObject jsonParam = new JSONObject();
-
-        // Request a string response from the provided URL.
-        VolleyHttpRequest  jsonObj = new VolleyHttpRequest(httpRequest.getAllHeaders(), url,jsonParam,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // Display the first 500 characters of the response string.
-//                        textView.setText("Response is: "+ response.substring(0,500));
-                        Log.d("wanglong", response.toString());
-                    }
-                }, new Response.ErrorListener() {
+        cityName.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-//                textView.setText("That didn't work!");
+            public void onClick(View view) {
+                startActivityForResult( new Intent(MainActivity.this, CitySearchActivity.class),100);
             }
-        }
+        });
 
-        );
-
-
-                // Add the request to the RequestQueue.
-        queue.add(jsonObj);
     }
+
 
     private void initBaiduLocation() {
         //My code start:

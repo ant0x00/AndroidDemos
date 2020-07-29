@@ -83,6 +83,10 @@
                 android:name=".camera.CameraPreviewActivity"
                 android:exported="false"/>
 
+        <activity
+                android:name=".CitySearchActivity"
+                android:exported="false"/>
+
     </application>
 
 </manifest>
