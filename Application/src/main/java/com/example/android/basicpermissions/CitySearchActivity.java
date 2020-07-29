@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class CitySearchActivity extends AppCompatActivity {
@@ -76,7 +77,7 @@ public class CitySearchActivity extends AppCompatActivity {
                                     Gson gson = new Gson();
                                     departCityList = gson.fromJson(jsonObj, new TypeToken<List<DepartCityInfoVo>>() {}.getType());
                                     Log.d("wanglong", departCityList.get(0).getCityId());
-                                    handleView();
+                                    handleView(departCityList);
 
                                 }
 
@@ -98,8 +99,13 @@ public class CitySearchActivity extends AppCompatActivity {
         queue.add(jsonObj);
     }
 
-    private void handleView() {
-
+    private void handleView(List<DepartCityInfoVo> departCityList) {
+        LinkedHashMap<String, List<DepartCityInfoVo>> departCityMaps = new LinkedHashMap<String, List<DepartCityInfoVo>>();
+        for (int i = 0; i < departCityList.size(); i++){
+            List<DepartCityInfoVo> cityList = new ArrayList<DepartCityInfoVo>();
+            cityList.add(departCityList.get(i));
+            departCityMaps.put(departCityList.get(i).getCityNameEn(),cityList);
+        }
     }
 
 }
