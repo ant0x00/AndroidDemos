@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pinnedheaderlistview_header"
+    android:textColor="@color/adaptation_four_999999"
+    android:textSize="@dimen/adaptation_four_gap14"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/adaptation_four_gap30"
+    android:layout_centerVertical="true"
+    android:layout_marginRight="@dimen/adaptation_four_gap30"
+    android:background="@color/adaptation_four_f5f5f5"
+    android:gravity="left|center_vertical"
+    android:paddingLeft="@dimen/adaptation_four_gap15"
+    android:text="顶部第一项设置"
+    android:textIsSelectable="false" />

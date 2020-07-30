@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * 适用于分组标签的ListView适配器
@@ -42,7 +43,7 @@ public abstract class BasePinnedHeaderAdapter<T> extends BaseAdapter implements 
      * @param context 上下文
      * @param mMap
      */
-    public BasePinnedHeaderAdapter(Context context, LinkedHashMap<String, List<T>> mMap) {
+    public BasePinnedHeaderAdapter(Context context, TreeMap<String, List<T>> mMap) {
         if(context!=null){
             this.context = context;
             inflater = LayoutInflater.from(context);
@@ -54,7 +55,7 @@ public abstract class BasePinnedHeaderAdapter<T> extends BaseAdapter implements 
      * 提取 分组标签数据 、 每个分组标签所对应的数据集合、 分组标签的在列表中的位置
      * @param mMap
      */
-    public void handlerData(LinkedHashMap<String, List<T>> mMap){
+    public void handlerData(TreeMap<String, List<T>> mMap){
         datas = new ArrayList<T>();
         sections = new ArrayList<String>();
         sectionPositons = new ArrayList<Integer>();

@@ -1,20 +1,6 @@
-<!--
-  Copyright 2017 The Android Open Source Project
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
 
     <!-- Define standard dimensions to comply with Holo-style grids and rhythm. -->
 
@@ -29,4 +15,417 @@
     <dimen name="horizontal_page_margin">@dimen/margin_medium</dimen>
     <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
 
+
+    <dimen name="title_height">64dip</dimen>
+    <dimen name="search_bar_height">32dip</dimen>
+    <dimen name="product_search_filter_item_height">100dip</dimen>
+
+    <!-- Font Size -->
+    <!-- 订单金额数 -->
+    <dimen name="transaction_amount_number_font_size">32sp</dimen>
+
+    <!-- View Spot -->
+    <dimen name="view_spot_gap">5dip</dimen>
+    <dimen name="view_spot_gap1">1dip</dimen>
+    <dimen name="view_spot_gap2">2dip</dimen>
+    <dimen name="view_spot_gap3">3dip</dimen>
+    <dimen name="view_spot_gap4">4dip</dimen>
+    <dimen name="view_spot_gap6">6dip</dimen>
+    <dimen name="view_spot_gap7">7dip</dimen>
+    <dimen name="view_spot_gap8">8dip</dimen>
+    <dimen name="view_spot_gap9">9dip</dimen>
+    <dimen name="view_spot_gap10">10dip</dimen>
+    <dimen name="view_spot_gap11">11dip</dimen>
+    <dimen name="view_spot_gap12">12dip</dimen>
+    <dimen name="view_spot_gap13">13dip</dimen>
+    <dimen name="view_spot_gap14">14dip</dimen>
+    <dimen name="view_spot_gap15">15dip</dimen>
+    <dimen name="view_spot_gap16">16dip</dimen>
+    <dimen name="view_spot_gap17">17dip</dimen>
+    <dimen name="view_spot_gap18">18dip</dimen>
+    <dimen name="view_spot_gap20">20dip</dimen>
+    <dimen name="view_spot_gap21">21dip</dimen>
+    <dimen name="view_spot_gap23">23dip</dimen>
+    <dimen name="view_spot_gap25">25dip</dimen>
+    <dimen name="view_spot_gap27">27dip</dimen>
+    <dimen name="view_spot_gap28">28dip</dimen>
+    <dimen name="view_spot_gap30">30dip</dimen>
+    <dimen name="view_spot_gap32">32dip</dimen>
+    <dimen name="view_spot_gap35">35dip</dimen>
+    <dimen name="view_spot_gap40">40dip</dimen>
+    <dimen name="view_spot_gap42">42dip</dimen>
+    <dimen name="view_spot_gap44">44dip</dimen>
+    <dimen name="view_spot_gap45">45dip</dimen>
+    <dimen name="view_spot_gap46">46dip</dimen>
+    <dimen name="view_spot_gap47">47dip</dimen>
+    <dimen name="view_spot_gap50">50dip</dimen>
+    <dimen name="view_spot_gap60">60dip</dimen>
+    <dimen name="view_spot_gap70">70dip</dimen>
+    <dimen name="view_spot_gap80">80dip</dimen>
+    <dimen name="view_spot_gap103">103dip</dimen>
+    <dimen name="view_spot_gap150">150dip</dimen>
+    <!-- Ticket -->
+    <dimen name="ticket_imageview_height">120dip</dimen>
+
+    <!-- =================================font size======================================= -->
+
+    <dimen name="font_size_xxxxl">28dp</dimen>
+    <dimen name="font_size_xxxl">18dp</dimen>
+    <dimen name="font_size_xxl">16dp</dimen>
+    <dimen name="font_size_xl">15dp</dimen>
+    <dimen name="font_size_l">14dp</dimen>
+    <dimen name="font_size_m">12dp</dimen>
+    <dimen name="font_size_s">10dp</dimen>
+
+
+    <dimen name="font_size_xxxl_new">18sp</dimen>
+    <dimen name="font_size_xxl_x_new">17sp</dimen>
+    <dimen name="font_size_xxl_new">16sp</dimen>
+    <dimen name="font_size_xl_new">15sp</dimen>
+    <dimen name="font_size_l_new">14sp</dimen>
+    <dimen name="font_size_m_x_new">13sp</dimen>
+    <dimen name="font_size_m_new">12sp</dimen>
+    <dimen name="font_size_s_new">10sp</dimen>
+
+    <dimen name="margin">1dp</dimen>
+
+    <!-- The width that is used when creating thumbnails of applications. -->
+    <dimen name="thumbnail_width">84dp</dimen>
+    <!-- The height that is used when creating thumbnails of applications. -->
+    <dimen name="thumbnail_height">63dp</dimen>
+    <!-- The standard size (both width and height) of an application icon that
+         will be displayed in the app launcher and elsewhere. -->
+    <dimen name="app_icon_size">48dip</dimen>
+    <dimen name="toast_y_offset">64dip</dimen>
+    <!-- Height of the status bar -->
+    <dimen name="status_bar_height">25dip</dimen>
+    <!-- Size of the fastscroll hint letter -->
+    <dimen name="fastscroll_overlay_size">104dp</dimen>
+    <!-- Width of the fastscroll thumb -->
+    <dimen name="fastscroll_thumb_width">64dp</dimen>
+    <!-- Height of the fastscroll thumb -->
+    <dimen name="fastscroll_thumb_height">52dp</dimen>
+    <!-- ===================自定义 日历 的 距离===================== -->
+    <dimen name="dimen_margin_circle">4dp</dimen>
+    <dimen name="dimen_margin_circle.negative">-4dp</dimen>
+
+
+    <dimen name="myputdown_button_rawheight">50dp</dimen>
+    <dimen name="myputdown_button_cellwidth">76dp</dimen>
+    <dimen name="myputdown_button_cellheight">29dp</dimen>
+    <dimen name="mypage_total_title_size">14sp</dimen>
+
+
+    <dimen name="view_search_history_item">50dp</dimen>
+    <dimen name="icon_size">40dp</dimen>
+    <dimen name="nick_name_size">16sp</dimen>
+
+    <!-- 我的优惠卷 -->
+    <dimen name="conpon_rb_width">200dp</dimen>
+    <dimen name="conpon_rb_height">50dp</dimen>
+    <dimen name="conpon_rb_heightpadding">48dp</dimen>
+    <dimen name="conpon_rb_enableheight">2dp</dimen>
+    <dimen name="conpon_text_size">13sp</dimen>
+    <dimen name="conpon_itemtext_size">14sp</dimen>
+    <dimen name="conpon_itemtext_hieghtsize">16dp</dimen>
+
+    <!-- 高级筛选-->
+    <dimen name="highfilter_item_height">50dp</dimen>
+    <dimen name="highfilter_item_title_edittext_height">30dp</dimen>
+    <dimen name="highfilter_item_title_size">16sp</dimen>
+    <dimen name="highfilter_item_title_mergin_left">15dp</dimen>
+    <dimen name="highfilter_item_title_image_mergin_right">15dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <!--4.0标注-->
+    <dimen name="adaptation_four_gap0">0dp</dimen>
+    <dimen name="adaptation_four_gap0_3">0.3dp</dimen>
+    <dimen name="adaptation_four_gap05">0.5dp</dimen>
+    <dimen name="adaptation_four_gap1">1dp</dimen>
+    <dimen name="adaptation_four_gap1_5">1.5dp</dimen>
+    <dimen name="adaptation_four_gap2">2dp</dimen>
+    <dimen name="adaptation_four_gap2_5">2.5dp</dimen>
+    <dimen name="adaptation_four_gap3">3dp</dimen>
+    <dimen name="adaptation_four_gap3_5">3.5dp</dimen>
+    <dimen name="adaptation_four_gap3_75">3.75dp</dimen>
+    <dimen name="adaptation_four_gap4">4dp</dimen>
+    <dimen name="adaptation_four_gap4_5">4.5dp</dimen>
+    <dimen name="adaptation_four_gap5">5dp</dimen>
+    <dimen name="adaptation_four_gap5_5">5.5dp</dimen>
+    <dimen name="adaptation_four_gap6">6dp</dimen>
+    <dimen name="adaptation_four_gap6_5">6.5dp</dimen>
+    <dimen name="adaptation_four_gap7">7dp</dimen>
+    <dimen name="adaptation_four_gap7_5">7.5dp</dimen>
+    <dimen name="adaptation_four_gap8">8dp</dimen>
+    <dimen name="adaptation_four_gap8_5">8.5dp</dimen>
+    <dimen name="adaptation_four_gap9">9dp</dimen>
+    <dimen name="adaptation_four_gap9_5">9.5dp</dimen>
+
+    <dimen name="adaptation_four_gap10">10dp</dimen>
+    <dimen name="adaptation_four_gap10_5">10.5dp</dimen>
+    <dimen name="adaptation_four_gap11">11dp</dimen>
+    <dimen name="adaptation_four_gap11_25">11.25dp</dimen>
+    <dimen name="adaptation_four_gap11_5">11.5dp</dimen>
+    <dimen name="adaptation_four_gap12">12dp</dimen>
+    <dimen name="adaptation_four_gap12_5">12.5dp</dimen>
+    <dimen name="adaptation_four_gap13">13dp</dimen>
+    <dimen name="adaptation_four_gap13_5">13.5dp</dimen>
+    <dimen name="adaptation_four_gap14">14dp</dimen>
+    <dimen name="adaptation_four_gap14_5">14.5dp</dimen>
+    <dimen name="adaptation_four_gap15">15dp</dimen>
+    <dimen name="adaptation_four_gap15_5">15.5dp</dimen>
+    <dimen name="adaptation_four_gap16">16dp</dimen>
+    <dimen name="adaptation_four_gap16_5">16.5dp</dimen>
+    <dimen name="adaptation_four_gap17">17dp</dimen>
+    <dimen name="adaptation_four_gap17_5">17.5dp</dimen>
+    <dimen name="adaptation_four_gap18">18dp</dimen>
+    <dimen name="adaptation_four_gap19">19dp</dimen>
+    <dimen name="adaptation_four_gap19_5">19.5dp</dimen>
+    <dimen name="adaptation_four_gap20">20dp</dimen>
+    <dimen name="adaptation_four_gap20_5">20.5dp</dimen>
+    <dimen name="adaptation_four_gap21">21dp</dimen>
+    <dimen name="adaptation_four_gap21_5">21.5dp</dimen>
+    <dimen name="adaptation_four_gap22">22dp</dimen>
+    <dimen name="adaptation_four_gap22_5">22.5dp</dimen>
+    <dimen name="adaptation_four_gap23">23dp</dimen>
+    <dimen name="adaptation_four_gap23_5">23.5dp</dimen>
+    <dimen name="adaptation_four_gap24">24dp</dimen>
+    <dimen name="adaptation_four_gap24_5">24.5dp</dimen>
+    <dimen name="adaptation_four_gap25">25dp</dimen>
+    <dimen name="adaptation_four_gap26">26dp</dimen>
+    <dimen name="adaptation_four_gap26_5">26.5dp</dimen>
+    <dimen name="adaptation_four_gap27">27dp</dimen>
+    <dimen name="adaptation_four_gap27_5">27.5dp</dimen>
+    <dimen name="adaptation_four_gap28">28dp</dimen>
+    <dimen name="adaptation_four_gap28_5">28.5dp</dimen>
+    <dimen name="adaptation_four_gap29">29dp</dimen>
+    <dimen name="adaptation_four_gap29_5">29.5dp</dimen>
+
+    <dimen name="adaptation_four_gap30">30dp</dimen>
+    <dimen name="adaptation_four_gap30_5">30.5dp</dimen>
+    <dimen name="adaptation_four_gap31">31dp</dimen>
+    <dimen name="adaptation_four_gap31_5">31.5dp</dimen>
+    <dimen name="adaptation_four_gap32">32dp</dimen>
+    <dimen name="adaptation_four_gap32_5">32.5dp</dimen>
+    <dimen name="adaptation_four_gap33">33dp</dimen>
+    <dimen name="adaptation_four_gap34">34dp</dimen>
+    <dimen name="adaptation_four_gap35">35dp</dimen>
+    <dimen name="adaptation_four_gap36">36dp</dimen>
+    <dimen name="adaptation_four_gap36_5">36.5dp</dimen>
+    <dimen name="adaptation_four_gap37">37dp</dimen>
+    <dimen name="adaptation_four_gap38">38dp</dimen>
+    <dimen name="adaptation_four_gap38_5">38.5dp</dimen>
+    <dimen name="adaptation_four_gap39">39dp</dimen>
+    <dimen name="adaptation_four_gap39_5">39.5dp</dimen>
+    <dimen name="adaptation_four_gap40">40dp</dimen>
+    <dimen name="adaptation_four_gap40_5">40.5dp</dimen>
+    <dimen name="adaptation_four_gap41">41dp</dimen>
+    <dimen name="adaptation_four_gap42">42dp</dimen>
+    <dimen name="adaptation_four_gap42_5">42.5dp</dimen>
+    <dimen name="adaptation_four_gap43">43dp</dimen>
+
+
+    <dimen name="adaptation_four_gap43_5">43.5dp</dimen>
+    <dimen name="adaptation_four_gap44">44dp</dimen>
+    <dimen name="adaptation_four_gap47">47dp</dimen>
+    <dimen name="adaptation_four_gap44_1">44.1dp</dimen>
+    <dimen name="adaptation_four_gap44_5">44.5dp</dimen>
+    <dimen name="adaptation_four_gap45">45dp</dimen>
+    <dimen name="adaptation_four_gap45_5">45.5dp</dimen>
+    <dimen name="adaptation_four_gap47_5" >47.5dp</dimen>
+    <dimen name="adaptation_four_gap48">48dp</dimen>
+    <dimen name="adaptation_four_gap48_5" >48.5dp</dimen>
+    <dimen name="adaptation_four_gap49">49dp</dimen>
+    <dimen name="adaptation_four_gap49_5">49.5dp</dimen>
+    <dimen name="adaptation_four_gap50">50dp</dimen>
+    <dimen name="adaptation_four_gap50_5">50.5dp</dimen>
+    <dimen name="adaptation_four_gap51">51dp</dimen>
+    <dimen name="adaptation_four_gap51_5">51.5dp</dimen>
+    <dimen name="adaptation_four_gap52_5">52.5dp</dimen>
+    <dimen name="adaptation_four_gap53">53dp</dimen>
+    <dimen name="adaptation_four_gap54">54dp</dimen>
+    <dimen name="adaptation_four_gap55">55dp</dimen>
+    <dimen name="adaptation_four_gap56">56dp</dimen>
+    <dimen name="adaptation_four_gap57">57dp</dimen>
+    <dimen name="adaptation_four_gap57_5">57.5dp</dimen>
+    <dimen name="adaptation_four_gap58">58dp</dimen>
+    <dimen name="adaptation_four_gap59">59dp</dimen>
+    <dimen name="adaptation_four_gap59_5">59.5dp</dimen>
+    <dimen name="adaptation_four_gap60">60dp</dimen>
+    <dimen name="adaptation_four_gap60_5">60.5dp</dimen>
+    <dimen name="adaptation_four_gap61">61dp</dimen>
+    <dimen name="adaptation_four_gap62">62dp</dimen>
+    <dimen name="adaptation_four_gap62_5">62.5dp</dimen>
+    <dimen name="adaptation_four_gap63">63dp</dimen>
+    <dimen name="adaptation_four_gap64">64dp</dimen>
+    <dimen name="adaptation_four_gap65">65dp</dimen>
+    <dimen name="adaptation_four_gap66">66dp</dimen>
+    <dimen name="adaptation_four_gap67">67dp</dimen>
+    <dimen name="adaptation_four_gap68_5">68.5dp</dimen>
+    <dimen name="adaptation_four_gap69">69dp</dimen>
+    <dimen name="adaptation_four_gap70">70dp</dimen>
+    <dimen name="adaptation_four_gap72">72dp</dimen>
+    <dimen name="adaptation_four_gap70_5">70.5dp</dimen>
+    <dimen name="adaptation_four_gap71">71dp</dimen>
+    <dimen name="adaptation_four_gap71_5">71.5dp</dimen>
+    <dimen name="adaptation_four_gap73">73dp</dimen>
+    <dimen name="adaptation_four_gap73_5">73.5dp</dimen>
+    <dimen name="adaptation_four_gap74">74dp</dimen>
+    <dimen name="adaptation_four_gap75">75dp</dimen>
+    <dimen name="adaptation_four_gap75_5">75.5dp</dimen>
+    <dimen name="adaptation_four_gap76">76dp</dimen>
+    <dimen name="adaptation_four_gap77">77dp</dimen>
+    <dimen name="adaptation_four_gap77_5">77.5dp</dimen>
+    <dimen name="adaptation_four_gap78">78dp</dimen>
+    <dimen name="adaptation_four_gap78_5">78.5dp</dimen>
+    <dimen name="adaptation_four_gap80">80dp</dimen>
+    <dimen name="adaptation_four_gap79">79dp</dimen>
+    <dimen name="adaptation_four_gap81">81dp</dimen>
+    <dimen name="adaptation_four_gap82">82dp</dimen>
+    <dimen name="adaptation_four_gap825">82.5dp</dimen>
+    <dimen name="adaptation_four_gap84">84dp</dimen>
+    <dimen name="adaptation_four_gap85">85dp</dimen>
+    <dimen name="adaptation_four_gap85_5">85.5dp</dimen>
+    <dimen name="adaptation_four_gap86">86dp</dimen>
+    <dimen name="adaptation_four_gap86_5">86.5dp</dimen>
+    <dimen name="adaptation_four_gap87">87dp</dimen>
+    <dimen name="adaptation_four_gap87_5">87.5dp</dimen>
+    <dimen name="adaptation_four_gap88">88dp</dimen>
+    <dimen name="adaptation_four_gap88_5">88.5dp</dimen>
+    <dimen name="adaptation_four_gap89">89dp</dimen>
+    <dimen name="adaptation_four_gap90">90dp</dimen>
+    <dimen name="adaptation_four_gap91">91dp</dimen>
+    <dimen name="adaptation_four_gap92">92dp</dimen>
+    <dimen name="adaptation_four_gap94">94dp</dimen>
+    <dimen name="adaptation_four_gap94_5">94.5dp</dimen>
+    <dimen name="adaptation_four_gap95">95dp</dimen>
+    <dimen name="adaptation_four_gap96">96dp</dimen>
+    <dimen name="adaptation_four_gap97">97dp</dimen>
+    <dimen name="adaptation_four_gap99">99dp</dimen>
+    <dimen name="adaptation_four_gap100">100dp</dimen>
+    <dimen name="adaptation_four_gap100_5">100.5dp</dimen>
+    <dimen name="adaptation_four_gap102">102dp</dimen>
+    <dimen name="adaptation_four_gap103">103dp</dimen>
+    <dimen name="adaptation_four_gap104">104dp</dimen>
+    <dimen name="adaptation_four_gap105">105dp</dimen>
+    <dimen name="adaptation_four_gap106">106dp</dimen>
+    <dimen name="adaptation_four_gap107">107dp</dimen>
+    <dimen name="adaptation_four_gap107_5">107.5dp</dimen>
+    <dimen name="adaptation_four_gap108">108dp</dimen>
+    <dimen name="adaptation_four_gap109">109dp</dimen>
+    <dimen name="adaptation_four_gap110">110dp</dimen>
+    <dimen name="adaptation_four_gap115">115dp</dimen>
+    <dimen name="adaptation_four_gap116">116dp</dimen>
+    <dimen name="adaptation_four_gap117">117dp</dimen>
+    <dimen name="adaptation_four_gap118">118dp</dimen>
+    <dimen name="adaptation_four_gap119">119dp</dimen>
+    <dimen name="adaptation_four_gap120">120dp</dimen>
+    <dimen name="adaptation_four_gap120_5">120.5dp</dimen>
+    <dimen name="adaptation_four_gap121">121dp</dimen>
+    <dimen name="adaptation_four_gap122">122dp</dimen>
+    <dimen name="adaptation_four_gap125">125dp</dimen>
+    <dimen name="adaptation_four_gap126">126dp</dimen>
+    <dimen name="adaptation_four_gap130">130dp</dimen>
+    <dimen name="adaptation_four_gap131">131dp</dimen>
+    <dimen name="adaptation_four_gap133">133dp</dimen>
+    <dimen name="adaptation_four_gap134">134dp</dimen>
+    <dimen name="adaptation_four_gap135">135dp</dimen>
+    <dimen name="adaptation_four_gap136">136dp</dimen>
+    <dimen name="adaptation_four_gap137_5">137.5dp</dimen>
+    <dimen name="adaptation_four_gap138">138dp</dimen>
+    <dimen name="adaptation_four_gap140">140dp</dimen>
+    <dimen name="adaptation_four_gap145">145dp</dimen>
+    <dimen name="adaptation_four_gap150">150dp</dimen>
+    <dimen name="adaptation_four_gap151">151dp</dimen>
+    <dimen name="adaptation_four_gap152">152dp</dimen>
+    <dimen name="adaptation_four_gap152_5">152.5dp</dimen>
+    <dimen name="adaptation_four_gap153">153dp</dimen>
+    <dimen name="adaptation_four_gap154">154dp</dimen>
+    <dimen name="adaptation_four_gap155">155dp</dimen>
+    <dimen name="adaptation_four_gap157">157dp</dimen>
+    <dimen name="adaptation_four_gap158">158dp</dimen>
+    <dimen name="adaptation_four_gap159">159dp</dimen>
+    <dimen name="adaptation_four_gap160">160dp</dimen>
+    <dimen name="adaptation_four_gap162">162dp</dimen>
+    <dimen name="adaptation_four_gap165">165dp</dimen>
+    <dimen name="adaptation_four_gap166">166dp</dimen>
+    <dimen name="adaptation_four_gap169">169dp</dimen>
+    <dimen name="adaptation_four_gap170">170dp</dimen>
+    <dimen name="adaptation_four_gap174">174dp</dimen>
+    <dimen name="adaptation_four_gap174_5">174.5dp</dimen>
+    <dimen name="adaptation_four_gap175">175dp</dimen>
+    <dimen name="adaptation_four_gap178">178dp</dimen>
+    <dimen name="adaptation_four_gap179">179dp</dimen>
+    <dimen name="adaptation_four_gap180">180dp</dimen>
+    <dimen name="adaptation_four_gap182">182dp</dimen>
+    <dimen name="adaptation_four_gap185">185dp</dimen>
+    <dimen name="adaptation_four_gap188">188dp</dimen>
+    <dimen name="adaptation_four_gap192">192dp</dimen>
+    <dimen name="adaptation_four_gap190">190dp</dimen>
+    <dimen name="adaptation_four_gap194_5">194.5dp</dimen>
+    <dimen name="adaptation_four_gap195">195dp</dimen>
+
+    <dimen name="adaptation_four_gap200">200dp</dimen>
+    <dimen name="adaptation_four_gap212">212dp</dimen>
+    <dimen name="adaptation_four_gap214">214dp</dimen>
+    <dimen name="adaptation_four_gap214_5">214.5dp</dimen>
+    <dimen name="adaptation_four_gap215">215dp</dimen>
+    <dimen name="adaptation_four_gap217_5">217.5dp</dimen>
+    <dimen name="adaptation_four_gap220">220dp</dimen>
+    <dimen name="adaptation_four_gap210_5">210.5dp</dimen>
+    <dimen name="adaptation_four_gap227">227dp</dimen>
+    <dimen name="adaptation_four_gap227_5">227.5dp</dimen>
+    <dimen name="adaptation_four_gap244">244dp</dimen>
+    <dimen name="adaptation_four_gap250">250dp</dimen>
+    <dimen name="adaptation_four_gap260">260dp</dimen>
+    <dimen name="adaptation_four_gap264">264dp</dimen>
+    <dimen name="adaptation_four_gap255">255dp</dimen>
+    <dimen name="adaptation_four_gap270">270dp</dimen>
+    <dimen name="adaptation_four_gap280">280dp</dimen>
+    <dimen name="adaptation_four_gap284">284dp</dimen>
+    <dimen name="adaptation_four_gap285">285dp</dimen>
+    <dimen name="adaptation_four_gap295">295dp</dimen>
+    <dimen name="adaptation_four_gap300">300dp</dimen>
+    <dimen name="adaptation_four_gap300_5">300.5dp</dimen>
+    <dimen name="adaptation_four_gap303">303dp</dimen>
+    <dimen name="adaptation_four_gap304">304dp</dimen>
+    <dimen name="adaptation_four_gap305">305dp</dimen>
+    <dimen name="adaptation_four_gap310">310dp</dimen>
+    <dimen name="adaptation_four_gap315">315dp</dimen>
+    <dimen name="adaptation_four_gap320">320dp</dimen>
+    <dimen name="adaptation_four_gap335">335dp</dimen>
+    <dimen name="adaptation_four_gap340">340dp</dimen>
+    <dimen name="adaptation_four_gap290">290dp</dimen>
+    <dimen name="adaptation_four_gap275">275dp</dimen>
+    <dimen name="adaptation_four_gap330">330dp</dimen>
+    <dimen name="adaptation_four_gap360">360dp</dimen>
+    <dimen name="adaptation_four_gap370">370dp</dimen>
+    <dimen name="adaptation_four_gap375">375dp</dimen>
+    <dimen name="adaptation_four_gap400">400dp</dimen>
+    <dimen name="adaptation_four_gap500">500dp</dimen>
+    <dimen name="adaptation_four_gap1000">1000dp</dimen>
+    <dimen name="adaptation_four_gap473">473dp</dimen>
+
+    <!-- sousuo-->
+    <dimen name="view_spot_gap176">176dip</dimen>
+    <dimen name="view_spot_gap250">250dip</dimen>
+    <dimen name="view_spot_gap325">325dip</dimen>
+    <dimen name="search_size_gap38">325dip</dimen>
+    <dimen name="search_size_gap98">98dip</dimen>
+    <dimen name="text_14dp">14dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- 滑动开关 -->
+    <dimen name="ksw_md_thumb_ripple_size">48dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+
+    <dimen name="ksw_md_thumb_solid_size">20dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>
+    <!-- 滑动结束 -->
 </resources>

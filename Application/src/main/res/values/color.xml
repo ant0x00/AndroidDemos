@@ -1,5 +1,444 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="master_background">#EA4609</color>
+    <color name="transparent_background">#70000000</color>
+    <color name="transparent_dialog_background">#90000000</color>
     <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white1">#55FFFFFF</color>
+    <color name="white_60">#e6e6e6</color>
+    <color name="white_bagroud">#f5f0ec</color>
+    <color name="white_gray">#E9F1F4</color>
+    <color name="white_gray_background">#F5F0E6</color>
+    <color name="black">#000000</color>
+    <color name="black_tras">#7f000000</color>
+    <color name="black_dark">#333333</color>
+    <color name="black_shallow">#475066</color>
+    <color name="black_profound">#767779</color>
+    <color name="orange">#FF6600</color>
+    <color name="orange_grade">#ee7344</color>
+    <color name="orange_logout_text">#E94709</color>
+    <color name="dark">#999999</color>
+    <color name="time_count_text_color">#0033FF</color>
+    <color name="orange_gray">#CC7033</color>
+    <color name="blue">#2BC1DD</color>
+    <color name="blue_dark">#0066CC</color>
+    <color name="blue_shallow">#5085C9</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="gray_dark">#999999</color>
+    <color name="gray_shallow">#D0D0D0</color>
+    <color name="gray_profound">#666666</color>
+    <color name="gray_text">#979998</color>
+    <color name="gray_bg">#414141</color>
+    <color name="search_dialog_bg">#ECECED</color>
+    <color name="adaptation_four_bdbdbd">#BDBDBD</color>F28121
+    <color name="adaptation_four_FEF8F2">#FEF8F2</color>
+    <color name="adaptation_four_F28121">#F28121</color>
 
+    <color name="brown">#B5895D</color>
+    <color name="brown_dark">#996633</color>
+    <color name="brown_shallow">#DCA842</color>
+    <color name="green">#8C8A8C</color>
+    <color name="green_deep">#73AD28</color>
+    <color name="green_dark">#69A802</color>
+    <color name="green_shallow">#70B332</color>
+    <color name="green_tour_list_item_type">#64AE13</color>
+
+    <color name="green_group">#72be22</color>
+    <color name="red_price">#FF3300</color>
+    <color name="red_price_pressed">#CC5133</color>
+    <color name="red">#FF0000</color>
+    <color name="red_header">#e94709</color>
+    <color name="red_shallow">#F86464</color>
+    <color name="yellow_dark">#FFE6B5</color>
+    <color name="yellow">#FBEEB5</color>
+    <color name="cyan">#8A9DB5</color>
+    <color name="welcome_timer">#77000000</color>
+    <color name="welcome_timernum">#FF0000</color>
+    <color name="pop_color">#e9512f</color>
+
+    <!-- home -->
+    <color name="net_tip_black">#77000000</color>
+    <color name="index_banner_info_back">#ffff65</color>
+    <color name="red_home_title">#ea4609</color>
+    <color name="red_pay_fail_result_button">#FC5A3F</color>
+    <color name="ctbri_main01">#83BFFC</color>
+    <color name="ctbri_main01_press">#75ABE2</color>
+    <color name="ctbri_main02">#5A93D5</color>
+    <color name="index_black">#444444</color>
+    <color name="index_black02">#333333</color>
+    <color name="index_black03">#262626</color>
+    <color name="index_qing">#aed376</color>
+    <color name="order_bargain_button">#62c67d</color>
+    <color name="index_qing_press">#9DBC69</color>
+    <color name="index_zi">#bc9edf</color>
+    <color name="index_zi_press">#A98BCA</color>
+    <color name="index_fenhong">#fd8484</color>
+    <color name="index_fenhong_perss">#E57474</color>
+    <color name="index_lanse">#37cbca</color>
+    <color name="index_lanse_press">#27B5B7</color>
+    <color name="index_zong">#ff4c00</color>
+    <color name="index_zong_shen">#e14b2d</color>
+    <color name="index_zong2">#fda46a</color>
+    <color name="index_zong2_press">#E2935F</color>
+    <color name="index_huise">#f5f1eb</color>
+    <color name="index_red">#FF7F7F</color>
+    <color name="index_black_qian">#9d9d9d</color>
+    <color name="index_edit_search_bk">#D53A01</color>
+    <color name="not_network_line">#D6D3CC</color>
+
+    <!-- =================my date show dialog============================ -->
+    <color name="custom_header_text">#A6A6A6</color>
+    <color name="custom_selected">#000000</color>
+    <color name="custom_background">#ffffff</color>
+    <color name="custom_background_today">#E94709</color>
+    <color name="custom_background_disabled">#ffffff</color>
+    <color name="custom_text_selected">#000000</color>
+    <color name="custom_text_inactive">#DDDDDD</color>
+    <color name="transparent1">#00000000</color>
+    <color name="chain_store_city_list_bg">#88000000</color>
+    <color name="chain_store_city_list_frist_item_bg">#f9f9f9</color>
+
+    <color name="gray_word">#a6a6b1</color>
+    <color name="no_more_background">#f5f0eb</color>
+    <color name="filter_button_background">#f5f5f5</color>
+    <!-- myaoyou -->
+    <color name="myaoyou_black">#333333</color>
+    <color name="myaoyou_black02">#7d7d7d</color>
+    <color name="myaoyou_black3">#6A6A6A</color>
+    <color name="myaoyou_black4">#777777</color>
+    <color name="myaoyou_blue"> #007AFF</color>
+    <color name="myaoyou_hui02">#6a6a6a</color>
+    <color name="myaoyou_orangle">#E94709</color>
+
+    <color name="myaoyou_orangle2">#FC4226</color>
+    <color name="myaoyou_orange3">#e94709</color>
+    <color name="myaoyou_orange4">#d13f08</color>
+    <color name="myaoyou_orange5">#ffff65</color>
+    <color name="myaoyou_line">#d5d3cb</color>
+    <color name="myaoyou_huise">#A6A6A6</color>
+    <color name="myaoyou_green">#17bf34</color>
+    <color name="bottom_red">#fe0000</color>
+    <color name="point_picker_title_color">#f6f6f6</color>
+
+    <!--    <color name="black40">#66000000</color> -->
+    <color name="black40">#f2f2f2</color>
+    <color name="black50">#7f000000</color>
+    <color name="free_hit">#fc6621</color>
+    <color name="free_hit_pay_result_view">#fc8456</color>
+    <color name="group_hit">#72be22</color>
+    <color name="ticket_hit">#00a0ff</color>
+    <color name="single_hit">#2ccacc</color>
+    <color name="visa_hit">#bd9be1</color>
+    <color name="local_hit">#FAB464</color>
+    <color name="discount_hit">#ff8282</color>
+
+
+    <!-- =================myseekbar text color============================ -->
+    <color name="myseekbar_text_color">#C8C8C8</color>
+    <color name="theme_text_color">#a6a6a6</color>
+    <color name="theme_slect_color">#e94709</color>
+
+
+    <!-- =================for aoyouhelp============================ -->
+    <color name="black_gray_line_color">#cccccc</color>
+    <color name="black_line_color">#999999</color>
+    <!-- 我的优惠券颜色 -->
+    <color name="aoyoucoupon_radio_default_bg">#ffffff</color>
+    <color name="aoyoucoupon_radio_check_bg">#E94709</color>
+    <color name="aoyoucoupon_conponitemtitlecolor">#333333</color>
+    <color name="aoyoucoupon_conponitemcolor">#88333333</color>
+
+
+    <!-- myinfodialog -->
+    <color name="ctbri_gray02">#CECECE</color>
+    <color name="ctbri_translate">#00000000</color>
+    <!-- 高级筛选-->
+    <color name="highfilter_item_text_color">#333333</color>
+
+
+    <!--支付页-->
+    <color name="pay_privilege_gree">#4D9000</color>
+    <color name="gray_blank_background">#f5f0eb</color>
+
+
+    <!--代金券-->
+    <color name="coupon_store_bg">#8661C9</color>
+    <color name="coupon_background">#ffffff</color>
+    <color name="coupon_twodimensioncode_background">#F4F4F4</color>
+
+
+    <!--门店地图-->
+    <color name="chain_map_bg">#ECECED</color>
+
+
+    <!--home_template_time_attack_4-->
+    <color name="adaptation_four_1F99F4">#1F99F4</color>
+    <color name="adaptation_four_ff5523">#FF5523</color>
+    <color name="adaptation_four_7Fff5523">#7FFF5523</color>
+    <color name="adaptation_four_23c3ff">#23c3ff</color>adaptation_four_FF5647
+    <color name="adaptation_four_ff1717">#ff1717</color>
+    <color name="adaptation_four_FA1F1F">#FA1F1F</color>
+    <color name="adaptation_four_FF5647">#FF5647</color>
+    <color name="adaptation_four_ff5647">#FF5647</color>
+    <color name="adaptation_four_222222">#222222</color>
+    <color name="adaptation_four_333333">#333333</color>
+    <color name="adaptation_four_999999">#999999</color>
+    <color name="adaptation_four_BBBBBB">#BBBBBB</color>
+    <color name="adaptation_four_B7B7B7">#b7b7b7</color>
+    <color name="adaptation_four_888888">#888888</color>
+    <color name="adaptation_four_5fc579">#5fc579</color>
+    <color name="adaptation_four_fda403">#fda403</color>
+    <color name="adaptation_four_666666">#666666</color>
+    <color name="adaptation_four_50BB4E">#50BB4E</color>
+    <color name="adaptation_four_fc5a3f">#FC5A3F</color>
+    <color name="adaptation_four_ff812f">#FF812F</color>
+    <color name="adaptation_four_F6A623">#F6A623</color>
+    <color name="adaptation_four_FC5A3F">#FC5A3F</color>
+    <color name="adaptation_four_ffffff">#FFFFFF</color>
+    <color name="adaptation_four_c9c9c9">#c9c9c9</color>
+    <color name="adaptation_four_f7f7f7">#f7f7f7</color>
+    <color name="adaptation_four_ffc2c2">#ffc2c2</color>
+    <color name="adaptation_four_f0faff">#F0FAFF</color>
+    <color name="adaptation_four_f1f1f1">#f1f1f1</color>
+    <color name="adaptation_four_ff4545">#FF4545</color>
+    <color name="adaptation_four_00000000">#00000000</color>
+    <color name="adaptation_four_F83616">#F83616</color>
+    <color name="adaptation_four_FFF6F0">#FFF6F0</color>
+    <color name="adaptation_four_01000000">#01000000</color>
+    <color name="adaptation_four_444444">#444444</color>
+    <color name="adaptation_four_dfdfdf">#DFDFDF</color>
+    <color name="adaptation_four_cdcdcd">#CDCDCD</color>
+    <color name="adaptation_four_bcbcbc">#BCBCBC</color>
+    <color name="adaptation_four_ff9b35">#FF9B35</color>
+    <color name="adaptation_four_ff9600">#FF9600</color>
+    <color name="adaptation_four_FF7375">#FF7375</color>
+    <color name="adaptation_four_58AEE5">#58AEE5</color>
+    <color name="adaptation_four_F2AA2E">#F2AA2E</color>
+    <color name="adaptation_four_F2F2F2">#F2F2F2</color>
+    <color name="adaptation_four_F0643C">#F0643C</color>
+    <color name="adaptation_four_1cb677">#1cb677</color>
+    <color name="adaptation_four_E0E0E0">#E0E0E0</color>
+    <color name="adaptation_four_E1E1E1">#E1E1E1</color>
+    <color name="adaptation_four_EEEEEE">#EEEEEE</color>
+    <color name="adaptation_four_FF6602">#FF6602</color>
+    <color name="adaptation_four_70C100">#70C100</color>
+    <color name="adaptation_four_565960">#565960</color>
+    <color name="adaptation_four_7f000000">#7f000000</color>
+    <color name="adaptation_four_ECECED">#ECECED</color>
+    <color name="adaptation_four_FDFDFD">#FDFDFD</color>
+    <color name="adaptation_four_868686">#868686</color>
+    <color name="adaptation_four_DBDBDB">#DBDBDB</color>
+    <color name="adaptation_four_cccccc">#cccccc</color>
+    <color name="adaptation_four_C0C0C0">#C0C0C0</color>
+    <!--home_template_time_attack_4 end-->
+    <color name="adaptation_four_f5f5f5">#F5F5F5</color>
+    <color name="adaptation_four_000000">#000000</color>
+    <color name="adaptation_four_41b3ee">#41B3EE</color>
+    <color name="adaptation_four_77FFAB0A">#95FFAB0A</color>
+    <color name="adaptation_four_dbc0a4">#DBC0A4</color>
+    <color name="adaptation_four_2f2b29">#2F2B29</color>
+    <color name="adaptation_four_66000000">#66000000</color>
+    <color name="adaptation_four_f4f4f4">#F4F4F4</color>
+    <color name="adaptation_four_1b96db">#1b96db</color>
+    <!--4.0背景-->
+    <!--首页白色背景-->
+    <color name="home_white_background_4">#FFFFFF</color>
+    <color name="home_white_background">#FFFFFF</color>
+    <!--推荐产品黑色字体-->
+    <color name="home_recommend_black">#333333</color>
+    <color name="home_recommend_black_4">#333333</color>
+    <!--推荐副标题颜色-->
+    <color name="home_recommend_gray">#999999</color>
+    <color name="home_recommend_gray_4">#999999</color>
+    <!--推荐产品背景色-->
+    <color name="home_recommend_bg_yellow_4">#FF9B35</color>
+    <color name="home_recommend_bg_red_4">#FF5647</color>
+    <color name="home_recommend_font_white_4">#FFFFFF</color>
+
+    <color name="adaptation_four_bf956a">#BF956A</color>
+    <color name="adaptation_four_ffab0a">#FFAB0A</color>
+    <color name="half_grey">#50959595</color>
+    <color name="button_pink_press">#e84054</color>
+    <color name="button_pink_normal">#ff4f64</color>
+
+    <color name="adaptation_four_fffc5a3f">#FFFC5A3F</color>
+
+    <color name="adaptation_four_ff595f">#ff595f</color>
+    <color name="adaptation_four_F0F2F4">#F0F2F4</color>
+
+    <!-- 搜索列表页-->
+    <color name="circle_image">#CCCCCC</color>
+    <color name="adaptation_four_ff5fc579">#FF5FC579</color>
+    <color name="miyue">#FFE0E0E0</color>
+    <color name="choose">#FFDFDFDF</color>
+    <color name="tab_shape">#DFDFDF</color>
+    <color name="tab_solid">#F5F5F5</color>
+    <color name="zuanji">#FDA403</color>
+    <color name="tab_indicator">#FFFF5523</color>
+    <color name="tab_default">#FF333333</color>
+    <color name="white_all">#FFFFFFFF</color>
+    <color name="miyue_text">#FF666666</color>
+    <color name="rank">#FF5523</color>
+    <color name="adaptation_four_ff3a50">#FF3A50</color>
+    <color name="adaptation_four_6ecf93">#6ecf93</color>
+    <color name="adaptation_four_E8480B">#E8480B</color>
+
+
+    <color name="adaptation_four_fea833">#fea833</color>
+    <color name="adaptation_four_64d58e">#64d58e</color>
+    <color name="adaptation_four_7C6BDB">#7C6BDB</color>
+    <color name="province_line_border">#C7C7C7</color>
+
+    <color name="adaptation_four_0f82fe">#0F82FE</color>
+    <color name="adaptation_four_f0f0f0">#F0F0F0</color>
+
+
+    <color name="adaptation_four_dddddd">#dddddd</color>
+    <color name="adaptation_four_ff1616">#ff1616</color>
+    <color name="adaptation_four_17a287">#17a287</color>
+
+    <color name="adaptation_four_4eb3ee">#4eb3ee</color>
+    <color name="adaptation_four_ff6600">#ff6600</color>
+    <color name="adaptation_four_372e2f">#372e2f</color>
+    <color name="adaptation_four_4B270F">#4B270F</color>
+    <color name="adaptation_four_6DCD84">#6DCD84</color>
+    <color name="adaptation_four_ff3950">#FF3950</color>
+    <color name="adaptation_four_ff6863">#FF6863</color>
+    <color name="adaptation_four_484848">#484848</color>
+    <color name="adaptation_four_52BDF5">#52BDF5</color>
+    <color name="adaptation_four_555555">#555555</color>
+    <!-- 标签色值 -->
+    <!-- 半自助 -->
+    <color name="adaptation_four_57C5FF">#57C5FF</color>
+    <!-- 自由行 -->
+    <color name="adaptation_four_3FADFF">#3FADFF</color>
+    <!-- 游轮 -->
+    <color name="adaptation_four_2F8AFF">#2F8AFF</color>
+    <!-- 跟团游 -->
+    <color name="adaptation_four_FF5C5D">#FF5C5D</color>
+    <!-- 目的地参团 -->
+    <color name="adaptation_four_FE8761">#FE8761</color>
+    <!-- 游学 -->
+    <color name="adaptation_four_FDA63E">#FDA63E</color>
+    <!-- 一日游 -->
+    <color name="adaptation_four_FB8E8D">#FB8E8D</color>
+    <!-- 签证 -->
+    <color name="adaptation_four_6BD379">#6BD379</color>
+    <!-- 票劵 -->
+    <color name="adaptation_four_1EDDB9">#1EDDB9</color>
+    <!-- WIFI -->
+    <color name="adaptation_four_0BBE4A">#0BBE4A</color>
+    <!-- 接送机 -->
+    <color name="adaptation_four_9FD55F">#9FD55F</color>
+    <!-- 高端旅行 -->
+    <color name="adaptation_four_9B6ED1">#9B6ED1</color>
+    <!-- 私家团 -->
+    <color name="adaptation_four_CD71AD">#CD71AD</color>
+    <!-- 酒店+ -->
+    <color name="adaptation_four_C5AD82">#C5AD82</color>
+    <!-- 康养 -->
+    <color name="adaptation_four_8DB655">#8DB655</color>
+    <!-- 户外 -->
+    <color name="adaptation_four_73D1E1">#73D1E1</color>
+    <!-- 置顶标签 -->
+    <color name="adaptation_four_F5A459">#F5A459</color>
+    <!-- 服务保障 -->
+    <color name="adaptation_four_6ECF93">#6ECF93</color>
+    <!-- 产品主题 -->
+    <color name="adaptation_four_F8F8F8">#F8F8F8</color>
+    <!-- 优惠信息 -->
+    <color name="adaptation_four_F25F46">#F25F46</color>
+    <!--机票-->
+    <color name="adaptation_four_5DB9FF">#5DB9FF</color>
+    <!--百变定制-->
+    <color name="adaptation_four_B273C8">#B273C8</color>
+
+    <color name="adaptation_four_151515">#151515</color>
+    <color name="adaptation_four_007AFF">#007AFF</color>
+    <color name="adaptation_four_c8c8c8">#c8c8c8</color>
+
+    <!--<color name="ksw_md_ripple_normal">#1E000000</color>-->
+    <!--<color name="ksw_md_ripple_checked">#33019285</color>-->
+    <!--<color name="ksw_md_solid_shadow">#33000000</color>-->
+    <!--<color name="ksw_md_solid_normal">#ECECEC</color>-->
+    <!--<color name="ksw_md_solid_checked">#019285</color>-->
+    <!--<color name="ksw_md_solid_disable">#FFFFFF</color>-->
+    <!--<color name="ksw_md_solid_checked_disable">#aaaaaa</color>-->
+    <color name="ksw_md_ripple_normal">#1E000000</color>
+    <color name="ksw_md_ripple_checked">#FFD6CA</color>
+    <color name="ksw_md_solid_shadow">#33000000</color>
+    <color name="ksw_md_solid_normal">#F8F8F8</color>
+    <color name="ksw_md_solid_checked">#FF5523</color>
+    <color name="ksw_md_solid_disable">#FFFFFF</color>
+    <color name="ksw_md_solid_checked_disable">#DFDFDF</color>
+
+    <color name="adaptation_four_c37634">#c37634</color>
+    <color name="adaptation_four_D8D8D8">#D8D8D8</color>
+    <color name="adaptation_four_D9D9D9">#D9D9D9</color>
+    <color name="adaptation_four_2EBE4C">#2EBE4C</color>
+    <color name="adaptation_four_5989D7">#5989D7</color>
+    <color name="adaptation_four_2A2A2A">#2A2A2A</color>
+    <color name="adaptation_four_4CD964">#4CD964</color>
+    <color name="adaptation_four_E9E9E9">#E9E9E9</color>
+
+    <color name="adaptation_four_7FFF5523">#7FFF5523</color>
+    <color name="adaptation_four_FFBBBB">#FFBBBBBB</color>
+    <color name="adaptation_four_FFF2F2F2">#FFF2F2F2</color>
+    <color name="adaptation_four_DFC68C">#DFC68C</color>
+    <color name="adaptation_four_DCE0E0">#DCE0E0</color>
+    <color name="adaptation_four_777777">#777777</color>
+    <color name="adaptation_four_E8E8E8">#E8E8E8</color>
+    <color name="adaptation_four_FEF1D2">#FEF1D2</color>
+    <color name="adaptation_four_FFF7DC">#FFF7DC</color>
+    <color name="adaptation_four_C17C28">#C17C28</color>
+    <color name="adaptation_four_FF101B">#FF101B</color>
+    <color name="adaptation_four_EDD394">#EDD394</color>
+    <color name="adaptation_four_F24B1A">#F24B1A</color>
+
+    <!--钱包银行色值-->
+    <!--广发银行-->
+    <!--工商银行-->
+    <!--中国银行-->
+    <!--浙商银行-->
+    <!--中信银行-->
+    <!--华夏银行-->
+    <!--招商银行-->
+    <!--北京银行-->
+    <color name="adaptation_four_EB505B">#EB505B</color>
+    <!--建设银行-->
+    <!--兴业银行-->
+    <color name="adaptation_four_1B64A3">#1B64A3</color>
+    <!--光大银行-->
+    <color name="adaptation_four_8E5D9D">#8E5D9D</color>
+    <!--农业银行-->
+    <color name="adaptation_four_1EA385">#1EA385</color>
+    <!--平安银行-->
+    <color name="adaptation_four_FF8745">#FF8745</color>
+    <!--中国邮政-->
+    <color name="adaptation_four_09AA70">#09AA70</color>
+    <!--上海银行-->
+    <color name="adaptation_four_4F66CB">#4F66CB</color>
+    <!--民生银行-->
+    <color name="adaptation_four_1B7AC7">#1B7AC7</color>
+    <!--浦发银行-->
+    <color name="adaptation_four_09489A">#09489A</color>
+    <!--默认银行-->
+    <color name="adaptation_four_FF7951">#FF7951</color>
+
+
+    <color name="adaptation_four_E6E6E6">#E6E6E6</color>
+    <color name="adaptation_four_464646">#464646</color>
+
+    <!-- QR_Code -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="system_bar_color">#fed952</color>
+    <color name="colorPrimaryDayDark">#303F9F</color>
+
+    <color name="adaptation_four_A7987E">#A7987E </color>
 </resources>

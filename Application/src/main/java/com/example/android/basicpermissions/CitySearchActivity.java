@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 public class CitySearchActivity extends AppCompatActivity {
     private PinnedHeaderListView lv_depart_city_list;
@@ -100,12 +101,40 @@ public class CitySearchActivity extends AppCompatActivity {
     }
 
     private void handleView(List<DepartCityInfoVo> departCityList) {
-        LinkedHashMap<String, List<DepartCityInfoVo>> departCityMaps = new LinkedHashMap<String, List<DepartCityInfoVo>>();
+        TreeMap<String, List<DepartCityInfoVo>> departCityMaps = new TreeMap<String, List<DepartCityInfoVo>>();
         for (int i = 0; i < departCityList.size(); i++){
-            List<DepartCityInfoVo> cityList = new ArrayList<DepartCityInfoVo>();
-            cityList.add(departCityList.get(i));
-            departCityMaps.put(departCityList.get(i).getCityNameEn(),cityList);
+            String firstLetter;
+            String cityEn = departCityList.get(i).getCityNameEn();
+            if(!cityEn.isEmpty()){
+                firstLetter = cityEn.substring(0,1).toUpperCase();
+                if(isLetter(firstLetter)){
+
+                    if(departCityMaps.containsKey(firstLetter)){
+                        departCityMaps.get(firstLetter).add(departCityList.get(i));
+                    } else {
+                        List<DepartCityInfoVo> cityList = new ArrayList<DepartCityInfoVo>();
+                        cityList.add(departCityList.get(i));
+                        departCityMaps.put(firstLetter,cityList);
+                    }
+                }
+            }
+            Log.d("wanglong","Just停顿一下");
         }
+
+
+        departCitysAdapter = new PinnedHeaderListViewAdapter<DepartCityInfoVo>(CitySearchActivity.this, departCityMaps, lv_depart_city_list, depart_city_alphabetlistview);
+        lv_depart_city_list.setOnScrollListener(departCitysAdapter);
+        lv_depart_city_list.setAdapter(departCitysAdapter);
+    }
+
+
+    private boolean isLetter(String letter) {
+        boolean result = false;
+        String allLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        if (allLetter.indexOf(letter) > -1) {
+            result = true;
+        }
+        return result;
     }
 
 }

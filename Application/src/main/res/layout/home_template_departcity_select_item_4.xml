@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/home_template_departcity_header_layout_4"/>
+
+    <TextView
+        android:id="@+id/tv_depart_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/adaptation_four_gap60"
+        android:background="@color/adaptation_four_ffffff"
+        android:gravity="center|left"
+        android:layout_marginRight="@dimen/adaptation_four_gap30"
+        android:text="北京"
+        android:textSize="@dimen/adaptation_four_gap17"
+        android:textColor="@drawable/home_template_depart_city_word_select_4"
+        android:paddingLeft="@dimen/adaptation_four_gap15"/>
+    <View
+        android:id="@+id/view_depart_city_listview_splite"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/adaptation_four_gap05"
+        android:layout_marginLeft="@dimen/adaptation_four_gap15"
+        android:layout_marginRight="@dimen/adaptation_four_gap45"
+        android:background="@color/adaptation_four_dfdfdf"
+        android:visibility="gone"/>
+
+</LinearLayout>

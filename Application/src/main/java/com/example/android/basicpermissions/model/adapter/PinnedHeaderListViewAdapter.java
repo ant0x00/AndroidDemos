@@ -6,11 +6,14 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.basicpermissions.R;
+import com.example.android.basicpermissions.model.DepartCityInfoVo;
 import com.example.android.basicpermissions.view.AlphabetListView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by libin on 2016/12/5.
@@ -19,7 +22,7 @@ import java.util.List;
 public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
     public List<String> alphabets;   //字母索引数据集合，品牌列表比较特殊，需要对原始的分组字母集合进行处理
 //    protected SharePreferenceHelper sharePreferenceHelper;
-    public PinnedHeaderListViewAdapter(Context context, LinkedHashMap<String, List<T>> mMap, ListView listView,
+    public PinnedHeaderListViewAdapter(Context context, TreeMap<String, List<T>> mMap, ListView listView,
                                        AlphabetListView alphabetListView) {
         super(context, mMap);
         alphabetListView.setAdapter(listView, this, alphabetPositionListener, initAlphabets(0));
@@ -59,33 +62,33 @@ public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
     @Override
     protected View getListView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
-//        if (convertView == null) {
-//            viewHolder = new ViewHolder();
-//            convertView = inflater.inflate(R.layout.home_template_departcity_select_item_4, null);
-//            viewHolder.header = (TextView) convertView.findViewById(R.id.pinnedheaderlistview_header);
-//            viewHolder.tvDepartCityName = (TextView) convertView.findViewById(R.id.tv_depart_city_name);
-//            viewHolder.viewDepartCityListviewSplite=(View)convertView.findViewById(R.id.view_depart_city_listview_splite);
-//            convertView.setTag(viewHolder);
-//        } else {
-//            viewHolder = (ViewHolder) convertView.getTag();
-//        }
-//       // convertView.setBackgroundResource(R.drawable.app_listview_item_bg);
-//
-//        if (datas != null) {
-//            int section = getSectionForPosition(position);
-//            HomeDepartCitySortVo departCityItem = (HomeDepartCitySortVo) getItem(position);
-//            if (departCityItem != null) {
-//                if (getPositionForSection(section) == position) {   //如果集合中字母对应的位置等于下标值，则显示字母，否则则隐藏
-//                    viewHolder.header.setVisibility(View.VISIBLE);
-//                    viewHolder.header.setText(sections.get(section));
-//                   // viewHolder.header.setBackgroundColor(context.getResources().getColor(R.color.adaptation_four_e7e9ee));
-//                } else {
-//                    viewHolder.header.setVisibility(View.GONE);
-//                }
-//                String cityName = departCityItem.getCityName();
-//                if (null != cityName) {
-//                    viewHolder.tvDepartCityName.setText(cityName);
-//                }
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.home_template_departcity_select_item_4, null);
+            viewHolder.header = (TextView) convertView.findViewById(R.id.pinnedheaderlistview_header);
+            viewHolder.tvDepartCityName = (TextView) convertView.findViewById(R.id.tv_depart_city_name);
+            viewHolder.viewDepartCityListviewSplite=(View)convertView.findViewById(R.id.view_depart_city_listview_splite);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+       // convertView.setBackgroundResource(R.drawable.app_listview_item_bg);
+
+        if (datas != null) {
+            int section = getSectionForPosition(position);
+            DepartCityInfoVo departCityItem = (DepartCityInfoVo) getItem(position);
+            if (departCityItem != null) {
+                if (getPositionForSection(section) == position) {   //如果集合中字母对应的位置等于下标值，则显示字母，否则则隐藏
+                    viewHolder.header.setVisibility(View.VISIBLE);
+                    viewHolder.header.setText(sections.get(section));
+                   // viewHolder.header.setBackgroundColor(context.getResources().getColor(R.color.adaptation_four_e7e9ee));
+                } else {
+                    viewHolder.header.setVisibility(View.GONE);
+                }
+                String cityName = departCityItem.getCityName();
+                if (null != cityName) {
+                    viewHolder.tvDepartCityName.setText(cityName);
+                }
 //                //当地选中城市显示为红色
 //                String currentCity=sharePreferenceHelper.getSharedPreference(Constants.DEPART_CITY_NAME,"");
 //                if(currentCity!=null){
@@ -97,19 +100,19 @@ public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
 //                        viewHolder.tvDepartCityName.setTextColor(context.getResources().getColor(R.color.adaptation_four_333333));
 //                    }
 //                }
-//            }
-//            //显示分隔线
-//            int nextSection=getSectionForPosition(position+1);
-//            if(section==nextSection){
-//                viewHolder.viewDepartCityListviewSplite.setVisibility(View.VISIBLE);
-//            }
-//            else{
-//                viewHolder.viewDepartCityListviewSplite.setVisibility(View.GONE);
-//            }
-//
-//
-//
-//        }
+            }
+            //显示分隔线
+            int nextSection=getSectionForPosition(position+1);
+            if(section==nextSection){
+                viewHolder.viewDepartCityListviewSplite.setVisibility(View.VISIBLE);
+            }
+            else{
+                viewHolder.viewDepartCityListviewSplite.setVisibility(View.GONE);
+            }
+
+
+
+        }
 
         return convertView;
     }
