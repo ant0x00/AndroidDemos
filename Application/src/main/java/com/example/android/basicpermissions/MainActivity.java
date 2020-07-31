@@ -151,6 +151,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String newCityName = data.getExtras().getString("newCityName");
+        cityName.setText(newCityName);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private void initBaiduLocation() {
         //My code start:

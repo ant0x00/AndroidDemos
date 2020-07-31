@@ -1,9 +1,11 @@
 package com.example.android.basicpermissions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -101,6 +103,8 @@ public class CitySearchActivity extends AppCompatActivity {
     }
 
     private void handleView(List<DepartCityInfoVo> departCityList) {
+
+        //处理数据
         TreeMap<String, List<DepartCityInfoVo>> departCityMaps = new TreeMap<String, List<DepartCityInfoVo>>();
         for (int i = 0; i < departCityList.size(); i++){
             String firstLetter;
@@ -125,6 +129,16 @@ public class CitySearchActivity extends AppCompatActivity {
         departCitysAdapter = new PinnedHeaderListViewAdapter<DepartCityInfoVo>(CitySearchActivity.this, departCityMaps, lv_depart_city_list, depart_city_alphabetlistview);
         lv_depart_city_list.setOnScrollListener(departCitysAdapter);
         lv_depart_city_list.setAdapter(departCitysAdapter);
+        lv_depart_city_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                DepartCityInfoVo cityInfo = (DepartCityInfoVo) lv_depart_city_list.getItemAtPosition(position);
+                intent.putExtra("newCityName",cityInfo.getCityName());
+                setResult(100,intent);
+                finish();
+            }
+        });
     }
 
 

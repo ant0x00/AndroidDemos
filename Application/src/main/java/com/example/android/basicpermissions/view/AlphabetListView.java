@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -18,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+import com.example.android.basicpermissions.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,12 +78,12 @@ public class AlphabetListView extends FrameLayout {
         mHandler = new Handler();
         /***************设置TextView相关属性***************************/
         mTextView = new TextView(mContext);
-        mTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 70);
-        mTextView.setTextColor(Color.parseColor("#ffffff"));
-//        mTextView.setBackgroundResource(R.drawable.alpha_center_corner);
+        mTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        mTextView.setTextColor(Color.parseColor("#122e29"));
+        mTextView.setBackgroundResource(R.drawable.tile);
         mTextView.setGravity(Gravity.CENTER);
         mTextView.setVisibility(View.INVISIBLE);
-        int width_height = convertDIP2PX(100);
+        int width_height = convertDIP2PX(50);
         FrameLayout.LayoutParams textLayoutParams = new FrameLayout.LayoutParams(width_height, width_height);
         textLayoutParams.gravity = Gravity.CENTER;
         mTextView.setLayoutParams(textLayoutParams);
@@ -152,7 +155,7 @@ public class AlphabetListView extends FrameLayout {
         alphabetLayout = new LinearLayout(context);
         alphabetLayout.setOrientation(LinearLayout.VERTICAL);
         FrameLayout.LayoutParams alphabetLayoutParams = new FrameLayout.LayoutParams(convertDIP2PX(30), ViewGroup.LayoutParams.WRAP_CONTENT);
-        alphabetLayoutParams.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+        alphabetLayoutParams.gravity = Gravity.RIGHT | Gravity.TOP;
         //alphabetLayoutParams.rightMargin = convertDIP2PX(3);
         alphabetLayoutParams.topMargin = convertDIP2PX(topMargin);
         alphabetLayoutParams.bottomMargin = convertDIP2PX(20);
@@ -169,7 +172,8 @@ public class AlphabetListView extends FrameLayout {
             if (indexArray.get(i).equals("荐")) {
                 textView.setTextColor(Color.parseColor("#CC0000"));
             } else {
-                textView.setTextColor(Color.argb(140, 105, 115, 125));
+//                textView.setTextColor(Color.argb(140, 105, 115, 125));
+                textView.setTextColor(0x8F0000FF);
             }
 
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
@@ -193,7 +197,7 @@ public class AlphabetListView extends FrameLayout {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         //设置字母索引背景
-                        //alphabetLayout.setBackgroundColor(Color.parseColor("#FF0000"));
+                        alphabetLayout.setBackgroundColor(Color.parseColor("#f47920"));
                       //  alphabetLayout.setBackgroundResource(R.drawable.alaph_list_corner);
                         float len = (float) (length == 0 ? 0.1 : (float) length);
                         int l = (int) (event.getY() / (alphabetLayout.getHeight() / len+0.3*(alphabetLayout.getHeight() / len)));
@@ -207,7 +211,7 @@ public class AlphabetListView extends FrameLayout {
                         int pos = positionListener.getPosition(indexArray.get(l));
                         if (pos != -1) {
                             mTextView.setText(indexArray.get(l));
-                            mTextView.setVisibility(View.GONE);
+                            mTextView.setVisibility(View.VISIBLE);
                             mHandler.removeCallbacks(mHideIndicator);
                             mHandler.postDelayed(mHideIndicator, indicatorDuration);
                             if (mListView instanceof ExpandableListView) {
@@ -216,7 +220,8 @@ public class AlphabetListView extends FrameLayout {
                                 if ("定位历史热门".equals(indexArray.get(l))){
                                     mListView.setSelection(0);
                                 }else {
-                                    mListView.setSelection(pos+1);//由于ListView增加了HeadView，此处需加1
+//                                    mListView.setSelection(pos+1);//由于ListView增加了HeadView，此处需加1
+                                    mListView.setSelection(pos);//由于ListView增加了HeadView，此处需加1
                                 }
 
                             }
@@ -228,8 +233,10 @@ public class AlphabetListView extends FrameLayout {
                         else if (l < 0) l = 0;
                         pos = positionListener.getPosition(indexArray.get(l));
                         if (pos != -1) {
+                            String txtStr = indexArray.get(l);
+                            Log.d("wanglong", txtStr);
                             mTextView.setText(indexArray.get(l));
-                            mTextView.setVisibility(View.GONE);
+                            mTextView.setVisibility(View.VISIBLE);
                             mHandler.removeCallbacks(mHideIndicator);
                             mHandler.postDelayed(mHideIndicator, indicatorDuration);
                             if (mListView instanceof ExpandableListView) {
@@ -245,7 +252,7 @@ public class AlphabetListView extends FrameLayout {
                         }
                         break;
                     case MotionEvent.ACTION_UP:
-                       // alphabetLayout.setBackgroundColor(Color.parseColor("#00E0E0E0"));
+                        alphabetLayout.setBackgroundColor(Color.parseColor("#00E0E0E0"));
                         break;
                 }
                 return true;

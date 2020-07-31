@@ -81,7 +81,6 @@ public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
                 if (getPositionForSection(section) == position) {   //如果集合中字母对应的位置等于下标值，则显示字母，否则则隐藏
                     viewHolder.header.setVisibility(View.VISIBLE);
                     viewHolder.header.setText(sections.get(section));
-                   // viewHolder.header.setBackgroundColor(context.getResources().getColor(R.color.adaptation_four_e7e9ee));
                 } else {
                     viewHolder.header.setVisibility(View.GONE);
                 }
@@ -124,8 +123,8 @@ public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
      */
     @Override
     protected void setHeaderContent(View header, String section) {
-//        TextView textView = (TextView) header.findViewById(R.id.pinnedheaderlistview_header);
-//        textView.setText(section);
+        TextView textView = (TextView) header.findViewById(R.id.pinnedheaderlistview_header);
+        textView.setText(section);
     }
 
 
