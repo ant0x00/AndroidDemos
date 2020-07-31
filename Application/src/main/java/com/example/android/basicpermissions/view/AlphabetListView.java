@@ -229,6 +229,7 @@ public class AlphabetListView extends FrameLayout {
                         break;
                     case MotionEvent.ACTION_MOVE:
                         l = (int) ((event.getY() + alphabetLayout.getHeight() / length / 2) / (alphabetLayout.getHeight() / length)) - 1;
+//                        l = (int) (event.getY() / (alphabetLayout.getHeight() / len+0.3*(alphabetLayout.getHeight() / len)));
                         if (l >= length) l = length - 1;
                         else if (l < 0) l = 0;
                         pos = positionListener.getPosition(indexArray.get(l));
