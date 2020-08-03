@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="当前位置"
+    android:gravity="left"
+    android:layout_marginLeft="@dimen/adaptation_four_gap10"
+    android:layout_marginBottom="@dimen/adaptation_four_gap10"
+    />
+    <View
+        android:layout_width="345dp"
+        android:layout_height="0.5dp"
+        android:background="#FFDFDFDF"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="北京 / 中青旅附近"
+        android:layout_marginLeft="@dimen/adaptation_four_gap20"
+        android:layout_marginTop="@dimen/adaptation_four_gap15"
+        android:layout_marginBottom="@dimen/adaptation_four_gap100"
+        android:background="#FFF2F2F2"
+        />
+</LinearLayout>

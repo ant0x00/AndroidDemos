@@ -50,7 +50,7 @@ public class PinnedHeaderListViewAdapter<T> extends BasePinnedHeaderAdapter<T> {
         if (sections != null && sections.size() > 0) {
             //sections中前两个是客户端加入的分组标签，初始化字母索引时需要剔除，但不能直接从删除sections中原始数据
             int size = sections.size();
-            alphabets.add(0, "定位历史热门");
+            alphabets.add(0, "定位");
             for (int i = position; i < size; i++) {
                 alphabets.add(sections.get(i));
             }

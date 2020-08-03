@@ -194,13 +194,19 @@ public class AlphabetListView extends FrameLayout {
         alphabetLayout.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                float len = (float) (length == 0 ? 0.1 : (float) length);
+                int l = (int) (event.getY() / (alphabetLayout.getHeight() / len));
+
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         //设置字母索引背景
                         alphabetLayout.setBackgroundColor(Color.parseColor("#f47920"));
                       //  alphabetLayout.setBackgroundResource(R.drawable.alaph_list_corner);
-                        float len = (float) (length == 0 ? 0.1 : (float) length);
-                        int l = (int) (event.getY() / (alphabetLayout.getHeight() / len+0.3*(alphabetLayout.getHeight() / len)));
+
+//                        float len = (float) (length == 0 ? 0.1 : (float) length);
+//                        int l = (int) (event.getY() / (alphabetLayout.getHeight() / len+0.3*(alphabetLayout.getHeight() / len)));
+//                        int l = (int) (event.getY() / (alphabetLayout.getHeight() / len));
+
                         if (l >= length){
                             l = length - 1;
                         }
@@ -217,19 +223,18 @@ public class AlphabetListView extends FrameLayout {
                             if (mListView instanceof ExpandableListView) {
                                 ((ExpandableListView) mListView).setSelectedGroup(pos);
                             } else {
-                                if ("定位历史热门".equals(indexArray.get(l))){
+                                if ("定位".equals(indexArray.get(l))){
                                     mListView.setSelection(0);
                                 }else {
-//                                    mListView.setSelection(pos+1);//由于ListView增加了HeadView，此处需加1
-                                    mListView.setSelection(pos);//由于ListView增加了HeadView，此处需加1
+                                    mListView.setSelection(pos+1);//由于ListView增加了HeadView，此处需加1
                                 }
 
                             }
                         }
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        l = (int) ((event.getY() + alphabetLayout.getHeight() / length / 2) / (alphabetLayout.getHeight() / length)) - 1;
-//                        l = (int) (event.getY() / (alphabetLayout.getHeight() / len+0.3*(alphabetLayout.getHeight() / len)));
+//                        l = (int) ((event.getY() + alphabetLayout.getHeight() / length / 2) / (alphabetLayout.getHeight() / length)) - 1;
+
                         if (l >= length) l = length - 1;
                         else if (l < 0) l = 0;
                         pos = positionListener.getPosition(indexArray.get(l));
@@ -243,12 +248,11 @@ public class AlphabetListView extends FrameLayout {
                             if (mListView instanceof ExpandableListView) {
                                 ((ExpandableListView) mListView).setSelectedGroup(pos);
                             } else {
-                                if ("定位历史热门".equals(indexArray.get(l))){
+                                if ("定位".equals(indexArray.get(l))){
                                     mListView.setSelection(0);
                                 }else {
                                     mListView.setSelection(pos+1);//由于ListView增加了HeadView，此处需加1
                                 }
-                               // mListView.setSelection(pos);//由于ListView增加了HeadView，此处需加1
                             }
                         }
                         break;

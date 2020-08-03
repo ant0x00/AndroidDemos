@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -33,11 +34,15 @@ public class CitySearchActivity extends AppCompatActivity {
     private AlphabetListView depart_city_alphabetlistview;
     private HttpPost httpRequest;
     private PinnedHeaderListViewAdapter<DepartCityInfoVo> departCitysAdapter;
+    private View headView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.city_search_list);
+
+        final LayoutInflater inflater = LayoutInflater.from(this);
+        headView = inflater.inflate(R.layout.current_location, null, false);
 
         lv_depart_city_list = findViewById(R.id.lv_depart_city_list);
         depart_city_alphabetlistview = findViewById(R.id.depart_city_alphabetlistview);
@@ -126,6 +131,10 @@ public class CitySearchActivity extends AppCompatActivity {
         }
 
 
+
+        lv_depart_city_list.addHeaderView(headView);
+
+
         departCitysAdapter = new PinnedHeaderListViewAdapter<DepartCityInfoVo>(CitySearchActivity.this, departCityMaps, lv_depart_city_list, depart_city_alphabetlistview);
         lv_depart_city_list.setOnScrollListener(departCitysAdapter);
         lv_depart_city_list.setAdapter(departCitysAdapter);
@@ -139,6 +148,8 @@ public class CitySearchActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
 
