@@ -35,25 +35,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.android.basicpermissions.camera.CameraPreviewActivity;
+import com.example.android.basicpermissions.model.DepartCityInfoVo;
 
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Launcher Activity that demonstrates the use of runtime permissions for Android M.
@@ -78,7 +78,7 @@ import java.util.ArrayList;
  * {@link android.support.v4.content.ContextCompat} and {@link android.support.v4.app.Fragment}).
  */
 public class MainActivity extends AppCompatActivity
-        implements ActivityCompat.OnRequestPermissionsResultCallback {
+        implements ActivityCompat.OnRequestPermissionsResultCallback, Serializable {
 
     private static final int PERMISSION_REQUEST_CAMERA = 0;
     private static final int PERMISSION_REQUEST_LOCATION = 1;
@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener;
     private AlertDialog.Builder builder;
+
+    private HttpPost httpRequest;
 
 
 
@@ -142,16 +144,96 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        cityName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult( new Intent(MainActivity.this, CitySearchActivity.class),100);
-            }
-        });
+
+
+        getData();
 
     }
 
-    @Override
+
+    private void getData() {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+//        String url ="http://hotelmicro.aoyou.com/app/Hotel/GetHotelCityList";
+        String url = "http://mservicetest.aoyou.com/api40/Hotel/GetHotelCityList";
+
+
+                httpRequest = new HttpPost();
+        httpRequest.addHeader("User-Agent", "android500519/ECE595BFD194AD6922B291694D8A1B31/ffffffff-a642-d802-ffff-fffff3f3e46b/0/1507bfd3f7f5b36231b");
+        httpRequest.addHeader("Accept-Encoding", "gzip");
+        JSONObject jsonParam = new JSONObject();
+
+        // Request a string response from the provided URL.
+        VolleyHttpRequest jsonObj = new VolleyHttpRequest(httpRequest.getAllHeaders(), url, jsonParam,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Display the first 500 characters of the response string.
+//                        Log.d("wanglong", response.toString());
+
+                        final TreeMap<String, List<DepartCityInfoVo>> cityData;
+                        try {
+                            if (response.getInt("ReturnCode") == 0) {
+                                Log.d("wanglong", "0开始数据转换...");
+
+
+                                if(null!=response.getString("Data")){
+
+                                    final String jsonObj = response.getString("Data");
+
+
+                                    cityName.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+
+                                            Intent intent = new Intent(MainActivity.this, CityListActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("cityList", jsonObj);
+                                            intent.putExtras(bundle);
+                                            startActivityForResult(intent, 100);
+
+//                                            startActivityForResult( new Intent(MainActivity.this, CityListActivity.class),100);
+                                        }
+                                    });
+
+                                    Snackbar.make(mLayout, "数据加载成功!",
+                                            Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok, new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent intent = new Intent(MainActivity.this, CityListActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("cityList", jsonObj);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                        }
+                                    }).show();
+                                }
+                            }
+                        } catch (JSONException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                textView.setText("That didn't work!");
+                Snackbar.make(mLayout, "重新加载数据!",
+                        Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getData();
+                    }
+                }).show();
+            }
+        }
+        );
+
+        // Add the request to the RequestQueue.
+        queue.add(jsonObj);
+    }
+
+        @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(data !=null){
             String newCityName = data.getExtras().getString("newCityName");
@@ -181,8 +263,6 @@ public class MainActivity extends AppCompatActivity
         //mLocationClient为第二步初始化过的LocationClient对象
         //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
         //更多LocationClientOption的配置，请参照类参考中LocationClientOption类的详细说明
-
-
     }
 
     private void getCurrentLocation() {
@@ -228,7 +308,7 @@ public class MainActivity extends AppCompatActivity
             }).show();
         } else {
             builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setView(MainActivity.this.getLayoutInflater().inflate(R.layout.confirm_dialog,null,false));
+            builder.setView(MainActivity.this.getLayoutInflater().inflate(R.layout.locate_permisson_confirm_dialog,null,false));
             builder.setTitle("未开启定位")
                     .setMessage("请开启定位")
                     .setNegativeButton("知道了", new DialogInterface.OnClickListener() {

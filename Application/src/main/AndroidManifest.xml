@@ -1,92 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  Copyright 2015 The Android Open Source Project
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.android.basicpermissions">
-
+    package="com.example.android.basicpermissions">
     <!-- BEGIN_INCLUDE(manifest) -->
-
-    <!-- Note that all required permissions are declared here in the Android manifest.
-     On Android M and above, use of these permissions is only requested at run time. -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <!-- END_INCLUDE(manifest) -->
-
-    <!-- My code start -->
-    <!-- 这个权限用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <!-- 这个权限用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!-- 访问网络，网络定位需要上网 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- 允许程序读取底层系统日志文件 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <!-- 允许使用PowerManager的 WakeLocks保持进程在休眠时从屏幕消失 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <!-- 允许程序读取或写入系统设置 -->
-    <!-- android 9.0上使用前台服务，需要添加权限 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <!-- 用于读取手机当前的状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 读取缓存数据 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 获取模拟定位信息 -->
-    <!-- My code end -->
-
-
-
-
+    <!--
+ Note that all required permissions are declared here in the Android manifest.
+     On Android M and above, use of these permissions is only requested at run time.
+    -->
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light">
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light">
+        <activity android:name=".SearchCityActivity"></activity>
 
-        <!-- AK鉴权 -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- AK鉴权 -->
+        <activity
+            android:name=".camera.CameraPreviewActivity"
+            android:exported="false" /> <!-- http://lbsyun.baidu.com/apiconsole/key -->
+        <activity
+            android:name=".CityListActivity"
+            android:exported="false" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="OgFscExXnjhcr0lOqxhiGmGpknAtFN5j" /> <!-- http://lbsyun.baidu.com/apiconsole/key -->
+            android:value="OgFscExXnjhcr0lOqxhiGmGpknAtFN5j" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
+    </application> <!-- END_INCLUDE(manifest) -->
+    <!-- My code start -->
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序读取底层系统日志文件 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许使用PowerManager的 WakeLocks保持进程在休眠时从屏幕消失 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 允许程序读取或写入系统设置 -->
+    <!-- android 9.0上使用前台服务，需要添加权限 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 读取缓存数据 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-
-        <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <!-- Activity that only displays the camera preview. -->
-        <activity
-                android:name=".camera.CameraPreviewActivity"
-                android:exported="false"/>
-
-        <activity
-                android:name=".CitySearchActivity"
-                android:exported="false"/>
-
-    </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
