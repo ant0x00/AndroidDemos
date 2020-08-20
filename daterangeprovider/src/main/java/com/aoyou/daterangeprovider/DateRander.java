@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by yanjizhou on 2017/5/4.
@@ -111,6 +113,38 @@ public class DateRander extends LinearLayout implements DateRanderItem.ISelectLi
         this.endEnableDate = removeTime(endEnableDate);
         this.canMultiSelect = false;
         this.iDateSelectListening = iDateSelectListening;
+
+        String s = yyyyMMdd.format(new Date());
+
+        try {
+            now = yyyyMMdd.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        init();
+    }
+
+
+    public void initRangeSelect(Date startDate, Date endDate, Date startEnableDate, Date endEnableDate, List<Long> selectedDates, IDateSelectListening iDateSelectListening)
+    {
+
+        this.startDate = removeTime(startDate);
+        this.endDate = removeTime(endDate);
+        this.startEnableDate = removeTime(startEnableDate);
+        this.endEnableDate = removeTime(endEnableDate);
+        this.canMultiSelect = false;
+
+        this.iDateSelectListening = iDateSelectListening;
+
+
+        for(int i=0; i<selectedDates.size(); i++)
+        {
+            if(selectedDates.get(i) == 0)
+                continue;
+            SelectedResult selectedResult = new SelectedResult();
+            selectedResult.setDate(removeTime(new Date(selectedDates.get(i))));
+            this.selectedDates.add(selectedResult);
+        }
 
         String s = yyyyMMdd.format(new Date());
 
@@ -330,14 +364,21 @@ public class DateRander extends LinearLayout implements DateRanderItem.ISelectLi
                         dateRanderItem.init(tableRow, weekday, cal.getTime(), startEnableDate, endEnableDate);
                         lisDays.add(dateRanderItem);
 
-                        if(this.selectedDates.size() > 0)
+                        if(this.selectedDates.size() > 1)
                         {
                             Date selectedDate = this.selectedDates.get(0).getDate();
+                            Date selectedDateEnd = this.selectedDates.get(1).getDate();
                             long selectedDateLong = selectedDate.getTime();
-                            if(startEnableDate.getTime() <= selectedDateLong && cal.getTime().getTime() == selectedDateLong)
+                            if(dateRanderItem.getFiledDate().getTime()>=selectedDate.getTime() && dateRanderItem.getFiledDate().getTime()<=selectedDateEnd.getTime())
                             {
                                 dateRanderItem.select(true);
+                                Log.d("wanglong", "默认选中日期~");
                             }
+//                            if(startEnableDate.getTime() <= selectedDateLong && cal.getTime().getTime() == selectedDateLong)
+//                            {
+//                                dateRanderItem.select(true);
+//                                Log.d("wanglong", "默认选中日期~");
+//                            }
                         }
 //                        dateRanderItem.setDay(String.valueOf(cal.get(Calendar.DAY_OF_MONTH)), "");
                         weekday++;
@@ -631,9 +672,10 @@ public class DateRander extends LinearLayout implements DateRanderItem.ISelectLi
     {
         Date result = null;
         String s = yyyyMMdd.format(date);
-
+        Log.d("wanglong","传进来的是" + s);
         try {
             result = yyyyMMdd.parse(s);
+            Log.d("wanglong",result.toString());
         } catch (ParseException e) {
             e.printStackTrace();
         }

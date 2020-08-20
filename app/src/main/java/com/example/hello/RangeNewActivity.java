@@ -53,21 +53,34 @@ public class RangeNewActivity extends BaseActivity implements
 
         Date now = new Date();
         Date startDate = new Date();
+
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.setTime(startDate);
         calendar.add(java.util.Calendar.MONTH, 12);
-        Date endDate = calendar.getTime();
+
+        Date endDate = calendar.getTime();//12个月之后
+
         java.util.Calendar yesterday = java.util.Calendar.getInstance();
         yesterday.setTime(now);
-        yesterday.add(java.util.Calendar.DAY_OF_MONTH, -1);
+        yesterday.add(java.util.Calendar.DAY_OF_MONTH, -1);//前一天
+
         Date startEnableDay = now;
         java.util.Calendar interCal = java.util.Calendar.getInstance();
         interCal.setTime(now);
-        interCal.add(java.util.Calendar.DAY_OF_MONTH,2);
+//        interCal.add(java.util.Calendar.DAY_OF_MONTH,2);//2天后，后天
         startEnableDay=interCal.getTime();
+
         Date endEnableDay = endDate;
+
         List<Long> selectedDates = new ArrayList<>();
-        dateRander.initSingleSelect(startDate, endDate, startEnableDay, endEnableDay, selectedDates, new IDateSelectListening() {
+
+        Long selectedTime = 1598284800000L;
+        selectedDates.add(selectedTime);
+        selectedDates.add(1598457600000L);
+//        selectedDates.add(1598086591L);
+
+
+        dateRander.initRangeSelect(startDate, endDate, startEnableDay, endEnableDay, selectedDates, new IDateSelectListening() {
             @Override
             public void selected(List<SelectedResult> dates) {
 //                Intent data = new Intent();
@@ -76,19 +89,6 @@ public class RangeNewActivity extends BaseActivity implements
 //                finish();
             }
         });
-    }
-
-    private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
-        Calendar calendar = new Calendar();
-        calendar.setYear(year);
-        calendar.setMonth(month);
-        calendar.setDay(day);
-        calendar.setSchemeColor(color);//如果单独标记颜色、则会使用这个颜色
-        calendar.setScheme(text);
-        calendar.addScheme(new Calendar.Scheme());
-        calendar.addScheme(0xFF008800, "假");
-        calendar.addScheme(0xFF008800, "节");
-        return calendar;
     }
 
 
