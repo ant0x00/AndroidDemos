@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/color_ffffff"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_year_month"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_30dp"
+        android:gravity="center"
+        android:textColor="@color/color_333333"
+        android:textSize="@dimen/size_14dp"></TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_0_5dp"
+        android:background="#dfdfdf"></View>
+
+    <TableLayout
+        android:id="@+id/tabel_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:stretchColumns="*">
+
+    </TableLayout>
+</LinearLayout>
